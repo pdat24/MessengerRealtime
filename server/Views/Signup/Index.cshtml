@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["title"] = "Đăng ký";
+}
+
+<div>
+    <form action="/signup" method="post" class="form">
+        <input name="userId" class="input" type="text" placeholder="ID đăng nhập" required minLength=5 />
+        <div class="d-flex gap-1 ms-1 mb-1">
+            <img class="info" alt="info" src="/imgs/info.png" />
+            <p class="mt-1 info-text">
+                Hãy nhập 1 chuỗi ký tự bất kỳ, nó thay thế cho số điện thoại hoặc email giúp bạn đăng nhập trong lần
+                tới
+            </p>
+        </div>
+        <input minLength=5
+               type="text"
+               placeholder="Tên người dùng"
+               required
+               class="mb-3 input"
+               name="username"
+               />
+        <input name="password" class="input" type="password" placeholder="Mật khẩu" required minLength="5" />
+        <div class="mt-4">
+            <button class="loginBtn" type="submit">
+                Tạo tài khoản
+            </button>
+            <div class="mt-2">
+                Bạn đã có tài khoản?
+                <a href="/login" class="signupBtn">
+                    Đăng nhập
+                </a>
+            </div>
+        </div>
+    </form>
+</div>

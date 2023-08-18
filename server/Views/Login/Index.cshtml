@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["title"] = "Đăng nhập";
+}
+
+<div>
+    <form action="/login" method="post" class="form">
+        <input name="userId" minLength=5 class="input mb-3" type="text" placeholder="ID đăng nhập" required />
+        <input name="password" class="input" type="password" placeholder="Mật khẩu" required minLength=5 />
+        <div class="d-flex justify-content-between align-items-center mt-4 flex-wrap gap-2">
+            <button class="loginBtn" type="submit">
+                Đăng nhập
+            </button>
+            <span class="text-sm">
+                Bạn chưa có tài khoản?
+                <a href="/signup" class="signupBtn">
+                    Đăng ký
+                </a>
+            </span>
+        </div>
+    </form>
+</div>

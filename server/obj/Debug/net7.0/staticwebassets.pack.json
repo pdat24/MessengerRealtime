@@ -1,0 +1,345 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\server.bundle.scp.css",
+      "PackagePath": "staticwebassets\\server.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\1f63c-686ed5ce.png",
+      "PackagePath": "staticwebassets\\assets\\1f63c-686ed5ce.png"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\1f923-84812cac.png",
+      "PackagePath": "staticwebassets\\assets\\1f923-84812cac.png"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\1f970-e09651eb.png",
+      "PackagePath": "staticwebassets\\assets\\1f970-e09651eb.png"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\favicon-ace07af6.ico",
+      "PackagePath": "staticwebassets\\assets\\favicon-ace07af6.ico"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\female-02-dd7c22f9.jpg",
+      "PackagePath": "staticwebassets\\assets\\female-02-dd7c22f9.jpg"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\female-03-6f3720ad.jpg",
+      "PackagePath": "staticwebassets\\assets\\female-03-6f3720ad.jpg"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\female-04-e32c661f.jpg",
+      "PackagePath": "staticwebassets\\assets\\female-04-e32c661f.jpg"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\female-06-16e330f1.jpg",
+      "PackagePath": "staticwebassets\\assets\\female-06-16e330f1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\female-09-6b11ac41.jpg",
+      "PackagePath": "staticwebassets\\assets\\female-09-6b11ac41.jpg"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\female-10-ede1ddfa.jpg",
+      "PackagePath": "staticwebassets\\assets\\female-10-ede1ddfa.jpg"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\index-162a7a3d.js",
+      "PackagePath": "staticwebassets\\assets\\index-162a7a3d.js"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\index-94c4e4b9.css",
+      "PackagePath": "staticwebassets\\assets\\index-94c4e4b9.css"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\male-01-63aab7b5.jpg",
+      "PackagePath": "staticwebassets\\assets\\male-01-63aab7b5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\male-02-ed82dd49.jpg",
+      "PackagePath": "staticwebassets\\assets\\male-02-ed82dd49.jpg"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\male-05-a3ba5c13.jpg",
+      "PackagePath": "staticwebassets\\assets\\male-05-a3ba5c13.jpg"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\male-06-99c169eb.jpg",
+      "PackagePath": "staticwebassets\\assets\\male-06-99c169eb.jpg"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\male-10-0eb1e57b.jpg",
+      "PackagePath": "staticwebassets\\assets\\male-10-0eb1e57b.jpg"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\male-12-c161af5a.jpg",
+      "PackagePath": "staticwebassets\\assets\\male-12-c161af5a.jpg"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\imgs\\info.png",
+      "PackagePath": "staticwebassets\\imgs\\info.png"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\imgs\\loginbg.png",
+      "PackagePath": "staticwebassets\\imgs\\loginbg.png"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.server.props",
+      "PackagePath": "build\\server.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.server.props",
+      "PackagePath": "buildMultiTargeting\\server.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.server.props",
+      "PackagePath": "buildTransitive\\server.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.server.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

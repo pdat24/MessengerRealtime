@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&display=swap');
+
+:root {
+    --bg-color: #fff;
+    --text-color: #333;
+    --bg-hover: #f5f5f5;
+    --active-color: #5ad539;
+    --red-badge-color: #e41e3f;
+    --primary-color: #0099ff;
+    --secondary-color: #65676b;
+    --secondary-color2: #e0e0e0;
+    --border-color: #e0e0e0;
+    --secondary-color3: #bbb;
+    --leftmsg-bg: #e4e6eb;
+    --purple-color: #8a31b3;
+    --scroll-bg: #fcfcfc;
+    --scroll-thumb-bg: #e8e8e8;
+}
+::-webkit-scrollbar {
+    width: 12px;
+    background-color: var(--scroll-bg);
+}
+::-webkit-scrollbar-thumb {
+    background-color: var(--scroll-thumb-bg);
+}
+.darkMode {
+    --bg-color: #181a1b;
+    --text-color: #fff;
+    --bg-hover: #333;
+    --active-color: #5ad539;
+    --red-badge-color: #e41e3f;
+    --border-color: #616161eb;
+    --primary-color: #0099ff;
+    --secondary-color: #767676;
+    --secondary-color2: #65676b;
+    --secondary-color3: #777;
+    --leftmsg-bg: #25282a;
+    --purple-color: #8a31b3;
+    --scroll-bg: #202324;
+    --scroll-thumb-bg: #454a4d;
+}
+.color-white {
+    color: var(--bg-color);
+}
+.color-black {
+    color: var(--text-color);
+}
+.border-color {
+    border-color: var(--border-color);
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-color);
+}
+body {
+    background-color: var(--bg-color);
+}
+.fs-13 {
+    font-size: 13px !important;
+}
+.fs-22 {
+    font-size: 22px !important;
+}

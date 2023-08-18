@@ -1,0 +1,83 @@
+.container {
+    background-color: var(--bg-color);
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+.linkBlock {
+    padding: 12px 8px;
+    overflow: hidden;
+    height: 100%;
+}
+.linkTitle {
+    font-size: 15px;
+    font-weight: 500;
+}
+.link {
+    display: flex;
+    align-items: center;
+    border-radius: 6px;
+    padding: 12px 12px;
+    transition: all ease 0.15s;
+    gap: 8px;
+    margin-bottom: 8px;
+
+    &:hover {
+        background-color: var(--bg-hover);
+    }
+}
+.avatarBlock {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 8px;
+    transition: all ease 0.15s;
+}
+.title {
+    padding: 0 8px;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+.avatar {
+    width: 32px !important;
+    height: 32px !important;
+    border: 1px solid lightgray;
+}
+// .badge {
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+//     width: 10;
+//     height: 10;
+//     border-radius: 50%;
+//     background-color: var(--red-badge-color);
+// }
+.groupavt {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+}
+
+// chat
+.chatContainer {
+    width: 360px;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+.searchBar {
+    background-color: var(--bg-hover);
+    display: flex;
+    align-items: center;
+    border-radius: 24px;
+    padding: 10px 12px;
+}
+.body {
+    flex: 1;
+    overflow: auto;
+}

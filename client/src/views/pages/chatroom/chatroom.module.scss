@@ -1,0 +1,19 @@
+.icon {
+    path {
+        color: var(--purple-color);
+    }
+}
+.btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    transition: all 0.15s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--bg-hover);
+    }
+}
