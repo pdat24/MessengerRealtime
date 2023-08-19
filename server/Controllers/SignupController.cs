@@ -12,14 +12,14 @@ namespace server.Controllers
             string? user_id = Request.Cookies["user_id"];
             if (user_id == null)
                 return View();
-            return RedirectPermanent("/");
+            return Redirect("/");
         }
 
         // [POST]::/signup
         [HttpPost]
         public async Task<IActionResult> Index(string userId, string username, string password, [FromServices] AppDB db)
         {
-            UserModel newUser = new() 
+            var newUser = new UserModel
             {
                 userId = userId,
                 username = username,

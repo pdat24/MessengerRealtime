@@ -1,25 +1,130 @@
 /**@jsxImportSource @emotion/react */
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
+import FlipCameraIosIcon from '@mui/icons-material/FlipCameraIos';
 import CloseIcon from '@mui/icons-material/Close';
+import LogoutIcon from '@mui/icons-material/Logout';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import { css } from '@emotion/react';
-import { Dispatch, SetStateAction, useState } from 'react';
+import { Dispatch, SetStateAction, useMemo, useRef, useState } from 'react';
 import scss from '../views/pages/chatroom/chatroom.module.scss';
 import { Button, Switch, TextField } from '@mui/material';
-import avatar from '~/assets/imgs/no-avatar.png';
+import jsCookie from 'js-cookie';
+import axios from 'axios';
+import { useSelector } from 'react-redux';
+import storage from '~/firebase/storage';
+import { v4 as uuidV4 } from 'uuid';
+import { uploadBytes, ref, listAll, getDownloadURL } from 'firebase/storage';
 
 interface ISettingModal {
     open: boolean;
     setOpen: Dispatch<SetStateAction<boolean>>;
 }
+
+function UsernameUpdateField() {
+    const userAPIUrl = useSelector(({ root }) => root.APIUrls.userAPIUrl);
+    const userId = useRef(jsCookie.get('user_id'));
+    const [newName, setNewName] = useState('');
+    const handleUpdate = async () => {
+        if (newName.trim()) {
+            await axios.patch(
+                `${userAPIUrl}/${userId.current}`,
+                {
+                    username: newName,
+                },
+                { headers: { 'Content-Type': 'application/json' } }
+            );
+            location.reload();
+        }
+    };
+    return (
+        <div>
+            <h6 css={styles.title} className="mb-3">
+                Sửa tên đăng nhập
+            </h6>
+            <div>
+                <TextField
+                    value={newName}
+                    onChange={(e) => setNewName(e.target.value)}
+                    label="Tên đăng nhập"
+                    variant="outlined"
+                    css={styles.input}
+                />
+                <Button variant="contained" css={styles.updateBtn} onClick={handleUpdate}>
+                    Update
+                </Button>
+            </div>
+        </div>
+    );
+}
+
 export default function SettingModal({ open, setOpen }: ISettingModal) {
-    const [darkMode, setDarkMode] = useState(false);
+    const userAPIUrl = useSelector(({ root }) => root.APIUrls.userAPIUrl);
+    const [username, setUsername] = useState('');
+    const userId = useRef(jsCookie.get('user_id'));
+    const [avatarUrl, setAvatarUrl] = useState('');
+    const [darkMode, setDarkMode] = useState(localStorage.getItem('dark_mode'));
+
+    const onDarkMode = () => {
+        document.body.classList.add('darkMode');
+        setDarkMode('true');
+    };
+    const offDarkMode = () => {
+        document.body.classList.remove('darkMode');
+        setDarkMode('false');
+    };
+
+    useMemo(() => {
+        axios.get(`${userAPIUrl}/${userId.current}`).then((res) => {
+            setUsername(res.data.username);
+            setAvatarUrl(res.data.avatarUrl);
+        });
+        if (darkMode === 'true') onDarkMode();
+        else offDarkMode();
+    }, []);
+
     const handleChangeDarkMode = () => {
-        if (darkMode) document.body.classList.remove('darkMode');
-        else document.body.classList.add('darkMode');
-        setDarkMode(!darkMode);
+        if (darkMode === 'true') {
+            localStorage.setItem('dark_mode', 'false');
+            offDarkMode();
+        } else {
+            localStorage.setItem('dark_mode', 'true');
+            onDarkMode();
+        }
+    };
+
+    const handleUpdateAvatar = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        try {
+            const element = e.currentTarget as HTMLInputElement;
+            if (element.files) {
+                const fileUrl = element.files[0].name + uuidV4();
+                const imgRef = ref(storage, 'avatars/' + fileUrl);
+                await uploadBytes(imgRef, element.files[0]);
+                const imgs = await listAll(ref(storage, 'avatars'));
+                for (const img of imgs.items) {
+                    const downloadUrl = await getDownloadURL(img);
+                    if (downloadUrl.includes(fileUrl)) {
+                        await axios.patch(
+                            `${userAPIUrl}/${userId.current}`,
+                            {
+                                avatarUrl: downloadUrl,
+                            },
+                            { headers: { 'Content-Type': 'application/json' } }
+                        );
+                        break;
+                    }
+                }
+                location.reload();
+            }
+        } catch (e) {
+            console.log(e);
+        }
+    };
+
+    const handleSignout = () => {
+        jsCookie.remove('user_id');
+        window.location.href = '/login';
     };
 
     return (
@@ -38,13 +143,35 @@ export default function SettingModal({ open, setOpen }: ISettingModal) {
                                 Tài khoản
                             </h6>
                             <div className="flex gap-2 items-center">
-                                <img src={avatar} alt="photo" css={styles.avatar} />
+                                <label
+                                    className="relative cursor-pointer block"
+                                    htmlFor="avatarInput"
+                                    title="Đổi ảnh đại diện"
+                                >
+                                    <img src={avatarUrl} alt="photo" css={styles.avatar} />
+                                    <div className="absolute bottom-0 right-0">
+                                        <FlipCameraIosIcon css={styles.cameraIcon} />
+                                    </div>
+                                    <input
+                                        onChange={handleUpdateAvatar}
+                                        accept="image/*"
+                                        type="file"
+                                        className="hidden"
+                                        id="avatarInput"
+                                    />
+                                </label>
                                 <div>
                                     <div className="color-black" css={styles.title}>
-                                        Phạm Quốc Đạt
+                                        {username}
                                     </div>
-                                    <div css={styles.desc}>user id</div>
+                                    <div css={styles.desc}>{userId.current}</div>
                                 </div>
+                            </div>
+                            <div className="flex justify-end">
+                                <Button variant="contained" onClick={handleSignout}>
+                                    <LogoutIcon className="me-1.5" css={styles.signoutBtn} />
+                                    <span className="capitalize text-white">Sign out</span>
+                                </Button>
                             </div>
                             <hr className="my-4" css={styles.hr} />
                             <div className="flex items-center px-1">
@@ -61,20 +188,14 @@ export default function SettingModal({ open, setOpen }: ISettingModal) {
                                     </div>
                                     <div css={styles.desc}>Chế độ tối đang {darkMode ? 'bật' : 'tắt'}</div>
                                 </div>
-                                <Switch checked={darkMode} onChange={handleChangeDarkMode} className="color-black" />
+                                <Switch
+                                    checked={darkMode === 'true'}
+                                    onChange={handleChangeDarkMode}
+                                    className="color-black"
+                                />
                             </div>
                             <hr className="my-4" css={styles.hr} />
-                            <div>
-                                <h6 css={styles.title} className="mb-3">
-                                    Sửa tên đăng nhập
-                                </h6>
-                                <div>
-                                    <TextField label="Tên đăng nhập" variant="outlined" css={styles.input} />
-                                    <Button color="success" variant="contained" css={styles.updateBtn}>
-                                        Update
-                                    </Button>
-                                </div>
-                            </div>
+                            <UsernameUpdateField />
                         </div>
                     </div>
                 </Box>
@@ -138,5 +259,17 @@ const styles = {
     `,
     hr: css`
         border-color: var(--border-color);
+    `,
+    signoutBtn: css`
+        font-size: 18px;
+        path {
+            color: #fff;
+        }
+    `,
+    cameraIcon: css`
+        font-size: 20px;
+        path {
+            color: var(--secondary-color);
+        }
     `,
 };

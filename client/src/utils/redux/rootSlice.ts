@@ -3,9 +3,9 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
     topic: '',
     emoji: '',
-    username: '',
-    avatar: '',
-    userId: localStorage.getItem('userId'),
+    APIUrls: {
+        userAPIUrl: 'https://localhost:7101/api/user',
+    },
 };
 
 const rootSlice = createSlice({
