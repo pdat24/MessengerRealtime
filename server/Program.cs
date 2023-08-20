@@ -1,4 +1,5 @@
 using server.Db;
+using server.Utils;
 
 string policyName = "clientApp";
 
@@ -7,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<AppDB>();
+builder.Services.AddSingleton<IUtilsContainer, UtilsContainer>();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(policyName, policy =>

@@ -1,28 +1,3 @@
-import _263a from '~/assets/imgs/emojies/263a.png';
-import _1faf6 from '~/assets/imgs/emojies/1faf6.png';
-import _1faf0 from '~/assets/imgs/emojies/1faf0.png';
-import _1fae2 from '~/assets/imgs/emojies/1fae2.png';
-import _1fac2 from '~/assets/imgs/emojies/1fac2.png';
-import _1f979 from '~/assets/imgs/emojies/1f979.png';
-import _1f972 from '~/assets/imgs/emojies/1f972.png';
-import _1f970 from '~/assets/imgs/emojies/1f970.png';
-import _1f923 from '~/assets/imgs/emojies/1f923.png';
-import _1f912 from '~/assets/imgs/emojies/1f912.png';
-import _1f616 from '~/assets/imgs/emojies/1f616.png';
-import _1f610 from '~/assets/imgs/emojies/1f610.png';
-import _1f603 from '~/assets/imgs/emojies/1f603.png';
-import _1f601 from '~/assets/imgs/emojies/1f601.png';
-import _1f600 from '~/assets/imgs/emojies/1f600.png';
-import _1f444 from '~/assets/imgs/emojies/1f444.png';
-import _1f595 from '~/assets/imgs/emojies/1f595.png';
-import _1f92e from '~/assets/imgs/emojies/1f92e.png';
-import _1f90f from '~/assets/imgs/emojies/1f90f.png';
-import _1f90c from '~/assets/imgs/emojies/1f90c.png';
-import _1f63c from '~/assets/imgs/emojies/1f63c.png';
-import _1f62a from '~/assets/imgs/emojies/1f62a.png';
-import _1f60d from '~/assets/imgs/emojies/1f60d.png';
-import _1f4a9 from '~/assets/imgs/emojies/1f4a9.png';
-
 const topics = [
     'radial-gradient(circle at center 75%, rgb(166, 22, 12) 0%, rgb(166, 22, 12) 50%, rgb(166, 22, 12) 100%)',
     'radial-gradient(circle at center 75%, rgb(55, 166, 74) 0%, rgb(36, 134, 52) 50%, rgb(16, 103, 31) 100%)',
@@ -47,30 +22,30 @@ const topics = [
 ];
 
 const emojies = [
-    _263a,
-    _1faf6,
-    _1faf0,
-    _1fae2,
-    _1fac2,
-    _1f979,
-    _1f972,
-    _1f970,
-    _1f923,
-    _1f912,
-    _1f616,
-    _1f610,
-    _1f603,
-    _1f601,
-    _1f600,
-    _1f444,
-    _1f595,
-    _1f92e,
-    _1f90f,
-    _1f90c,
-    _1f63c,
-    _1f62a,
-    _1f60d,
-    _1f4a9,
+    'https://firebasestorage.googleapis.com/v0/b/messengerrealtime-134d1.appspot.com/o/emojis%2F1f444.png?alt=media&token=df0d5538-cdb3-477d-842e-8064aa9eabb1',
+    'https://firebasestorage.googleapis.com/v0/b/messengerrealtime-134d1.appspot.com/o/emojis%2F1f4a9.png?alt=media&token=0842217b-1221-49cd-afef-10e48f36bca1',
+    'https://firebasestorage.googleapis.com/v0/b/messengerrealtime-134d1.appspot.com/o/emojis%2F1f595.png?alt=media&token=078de7de-4302-436f-a54e-fa3bc4b9f2a1',
+    'https://firebasestorage.googleapis.com/v0/b/messengerrealtime-134d1.appspot.com/o/emojis%2F1f600.png?alt=media&token=4a34a39b-0ed0-444c-85d2-abae3c7e39d9',
+    'https://firebasestorage.googleapis.com/v0/b/messengerrealtime-134d1.appspot.com/o/emojis%2F1f601.png?alt=media&token=a4e3797e-eecd-45fd-a297-bad236d51820',
+    'https://firebasestorage.googleapis.com/v0/b/messengerrealtime-134d1.appspot.com/o/emojis%2F1f603.png?alt=media&token=4ba17605-5c49-409a-b62b-e34a3517002f',
+    'https://firebasestorage.googleapis.com/v0/b/messengerrealtime-134d1.appspot.com/o/emojis%2F1f60d.png?alt=media&token=1b8c79d0-0dff-4964-a545-96b2d6409d5a',
+    'https://firebasestorage.googleapis.com/v0/b/messengerrealtime-134d1.appspot.com/o/emojis%2F1f610.png?alt=media&token=53acba05-970a-4659-9471-2ee438d60e94',
+    'https://firebasestorage.googleapis.com/v0/b/messengerrealtime-134d1.appspot.com/o/emojis%2F1f616.png?alt=media&token=f5de5bbb-9742-4643-af48-8a7bc06d1fb4',
+    'https://firebasestorage.googleapis.com/v0/b/messengerrealtime-134d1.appspot.com/o/emojis%2F1f62a.png?alt=media&token=c9d9ef98-a1a3-4b52-b721-76aee9e11b70',
+    'https://firebasestorage.googleapis.com/v0/b/messengerrealtime-134d1.appspot.com/o/emojis%2F1f63c.png?alt=media&token=23083bae-299b-4e22-a95c-b13fd9456018',
+    'https://firebasestorage.googleapis.com/v0/b/messengerrealtime-134d1.appspot.com/o/emojis%2F1f90c.png?alt=media&token=8ea2e018-96c9-49ad-8d77-8c513abd3419',
+    'https://firebasestorage.googleapis.com/v0/b/messengerrealtime-134d1.appspot.com/o/emojis%2F1f90f.png?alt=media&token=d5d6cd9a-a0b0-4541-9205-6d29e9c65727',
+    'https://firebasestorage.googleapis.com/v0/b/messengerrealtime-134d1.appspot.com/o/emojis%2F1f912.png?alt=media&token=41793e8d-c8b0-483d-9045-97b76b0037e5',
+    'https://firebasestorage.googleapis.com/v0/b/messengerrealtime-134d1.appspot.com/o/emojis%2F1f923.png?alt=media&token=5d3b874f-2294-4a25-addc-9c379cc8a96c',
+    'https://firebasestorage.googleapis.com/v0/b/messengerrealtime-134d1.appspot.com/o/emojis%2F1f92e.png?alt=media&token=b900587a-c9a0-40fb-beec-84737c47c7a1',
+    'https://firebasestorage.googleapis.com/v0/b/messengerrealtime-134d1.appspot.com/o/emojis%2F1f970.png?alt=media&token=555de6ac-05a4-485d-bca5-0c3949d9dd74',
+    'https://firebasestorage.googleapis.com/v0/b/messengerrealtime-134d1.appspot.com/o/emojis%2F1f972.png?alt=media&token=6e0bb388-8787-4275-b925-a7aac0e00589',
+    'https://firebasestorage.googleapis.com/v0/b/messengerrealtime-134d1.appspot.com/o/emojis%2F1f979.png?alt=media&token=179e9e48-5b4b-4173-8e7c-863c31d352cc',
+    'https://firebasestorage.googleapis.com/v0/b/messengerrealtime-134d1.appspot.com/o/emojis%2F1fac2.png?alt=media&token=5b657ef1-afdf-488c-8db4-77f73ca655b2',
+    'https://firebasestorage.googleapis.com/v0/b/messengerrealtime-134d1.appspot.com/o/emojis%2F1fae2.png?alt=media&token=4b102b9c-b4b6-4880-8196-2e416a7375df',
+    'https://firebasestorage.googleapis.com/v0/b/messengerrealtime-134d1.appspot.com/o/emojis%2F1faf0.png?alt=media&token=754fb511-1fbf-44ad-8195-f7125d165408',
+    'https://firebasestorage.googleapis.com/v0/b/messengerrealtime-134d1.appspot.com/o/emojis%2F1faf6.png?alt=media&token=4a01be3c-bc25-40af-9fae-480ab596bbcc',
+    'https://firebasestorage.googleapis.com/v0/b/messengerrealtime-134d1.appspot.com/o/emojis%2F263a.png?alt=media&token=87819c64-df92-49a1-9d17-5a0063f3990e',
 ];
 
 export { emojies, topics };

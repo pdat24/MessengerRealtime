@@ -2,14 +2,14 @@
 import { css } from '@emotion/react';
 import { IChatBox } from '~/utils/types';
 
-function ChatBox({ name, newMsg, avatar, unread, conversation }: IChatBox) {
+function ChatBox({ username, newMessage, avatarUrl, unread, conversation }: IChatBox) {
     const handleClick = () => {
         window.dispatchEvent(
             new CustomEvent('selectedAChat', {
                 detail: {
-                    name,
-                    newMsg,
-                    avatar,
+                    username,
+                    newMessage,
+                    avatarUrl,
                     unread,
                     conversation,
                 },
@@ -20,14 +20,18 @@ function ChatBox({ name, newMsg, avatar, unread, conversation }: IChatBox) {
     return (
         <div css={styles.container} onClick={handleClick}>
             <div className="flex gap-2 items-center">
-                <img src={avatar} alt="avatar" css={styles.avatar} />
+                <img src={avatarUrl} alt="avatar" css={styles.avatar} />
                 <div>
-                    <h6 css={styles.name}>{name}</h6>
-                    <span css={unread ? styles.unreadMsg : styles.readMsg}>{newMsg}</span>
+                    <h6 css={styles.name}>{username}</h6>
+                    <span css={unread ? styles.unreadMsg : styles.readMsg}>{newMessage}</span>
                 </div>
             </div>
             <div css={styles.right}>
-                {unread ? <div css={styles.unreadDot}></div> : <img src={avatar} alt="avatar" css={styles.subAvatar} />}
+                {unread ? (
+                    <div css={styles.unreadDot}></div>
+                ) : (
+                    <img src={avatarUrl} alt="avatar" css={styles.subAvatar} />
+                )}
             </div>
         </div>
     );

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
 using server.Db;
+using server.Utils;
 
 namespace server.Controllers
 {
@@ -17,8 +18,12 @@ namespace server.Controllers
 
         // [POST]::/login
         [HttpPost]
-        public async Task<IActionResult> Index(string userId, string password, [FromServices] AppDB db)
-        {
+        public async Task<IActionResult> Index(
+            string userId, 
+            string password, 
+            [FromServices] AppDB db,
+            [FromServices] IUtilsContainer utils
+        ) {
             bool ok = false;
             var users = await db.Users.FindAsync(item => true);
             await users.ForEachAsync(user =>
@@ -26,10 +31,11 @@ namespace server.Controllers
                 if (user.userId == userId && user.password == password)
                     ok = true;
             });
-
             if (ok)
             {
+                var userDbId = await utils.GetUserDbIdByUserIdAndPassord(userId, password, db);
                 Response.Cookies.Append("user_id", userId);
+                Response.Cookies.Append("user_DbId", userDbId);
                 return Redirect("/");
             }
             return View();

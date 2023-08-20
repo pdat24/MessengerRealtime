@@ -7,7 +7,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import { css } from '@emotion/react';
-import { Dispatch, SetStateAction, useMemo, useRef, useState } from 'react';
+import { Dispatch, SetStateAction, useMemo, useState } from 'react';
 import scss from '../views/pages/chatroom/chatroom.module.scss';
 import { Button, Switch, TextField } from '@mui/material';
 import jsCookie from 'js-cookie';
@@ -23,13 +23,13 @@ interface ISettingModal {
 }
 
 function UsernameUpdateField() {
-    const userAPIUrl = useSelector(({ root }) => root.APIUrls.userAPIUrl);
-    const userId = useRef(jsCookie.get('user_id'));
+    const userAPIUrl = useSelector(({ root }) => root.APIs.user);
+    const userId = useSelector(({ root }) => root.userId);
     const [newName, setNewName] = useState('');
     const handleUpdate = async () => {
         if (newName.trim()) {
             await axios.patch(
-                `${userAPIUrl}/${userId.current}`,
+                `${userAPIUrl}/${userId}`,
                 {
                     username: newName,
                 },
@@ -60,9 +60,9 @@ function UsernameUpdateField() {
 }
 
 export default function SettingModal({ open, setOpen }: ISettingModal) {
-    const userAPIUrl = useSelector(({ root }) => root.APIUrls.userAPIUrl);
+    const userAPIUrl = useSelector(({ root }) => root.APIs.user);
     const [username, setUsername] = useState('');
-    const userId = useRef(jsCookie.get('user_id'));
+    const userId = useSelector(({ root }) => root.userId);
     const [avatarUrl, setAvatarUrl] = useState('');
     const [darkMode, setDarkMode] = useState(localStorage.getItem('dark_mode'));
 
@@ -76,7 +76,7 @@ export default function SettingModal({ open, setOpen }: ISettingModal) {
     };
 
     useMemo(() => {
-        axios.get(`${userAPIUrl}/${userId.current}`).then((res) => {
+        axios.get(`${userAPIUrl}/${userId}`).then((res) => {
             setUsername(res.data.username);
             setAvatarUrl(res.data.avatarUrl);
         });
@@ -95,35 +95,42 @@ export default function SettingModal({ open, setOpen }: ISettingModal) {
     };
 
     const handleUpdateAvatar = async (e: React.ChangeEvent<HTMLInputElement>) => {
-        try {
-            const element = e.currentTarget as HTMLInputElement;
-            if (element.files) {
-                const fileUrl = element.files[0].name + uuidV4();
-                const imgRef = ref(storage, 'avatars/' + fileUrl);
-                await uploadBytes(imgRef, element.files[0]);
-                const imgs = await listAll(ref(storage, 'avatars'));
-                for (const img of imgs.items) {
-                    const downloadUrl = await getDownloadURL(img);
-                    if (downloadUrl.includes(fileUrl)) {
-                        await axios.patch(
-                            `${userAPIUrl}/${userId.current}`,
-                            {
-                                avatarUrl: downloadUrl,
-                            },
-                            { headers: { 'Content-Type': 'application/json' } }
-                        );
-                        break;
-                    }
+        const element = e.currentTarget as HTMLInputElement;
+        if (element.files) {
+            const newAvatar = element.files[0];
+
+            // update UI
+            const newAvatarUrl = URL.createObjectURL(newAvatar);
+            setAvatarUrl(newAvatarUrl);
+            window.dispatchEvent(new CustomEvent('changeAvatar', { detail: newAvatarUrl }));
+
+            const fileUrl = newAvatar.name + uuidV4();
+            const imgRef = ref(storage, 'avatars/' + fileUrl);
+
+            // upload to firebase
+            await uploadBytes(imgRef, element.files[0]);
+            const imgs = await listAll(ref(storage, 'avatars'));
+
+            // update
+            for (const img of imgs.items) {
+                const downloadUrl = await getDownloadURL(img);
+                if (downloadUrl.includes(fileUrl)) {
+                    await axios.patch(
+                        `${userAPIUrl}/${userId}`,
+                        {
+                            avatarUrl: downloadUrl,
+                        },
+                        { headers: { 'Content-Type': 'application/json' } }
+                    );
+                    break;
                 }
-                location.reload();
             }
-        } catch (e) {
-            console.log(e);
         }
     };
 
     const handleSignout = () => {
         jsCookie.remove('user_id');
+        jsCookie.remove('user_DbId');
         window.location.href = '/login';
     };
 
@@ -164,7 +171,7 @@ export default function SettingModal({ open, setOpen }: ISettingModal) {
                                     <div className="color-black" css={styles.title}>
                                         {username}
                                     </div>
-                                    <div css={styles.desc}>{userId.current}</div>
+                                    <div css={styles.desc}>{userId}</div>
                                 </div>
                             </div>
                             <div className="flex justify-end">
@@ -176,7 +183,7 @@ export default function SettingModal({ open, setOpen }: ISettingModal) {
                             <hr className="my-4" css={styles.hr} />
                             <div className="flex items-center px-1">
                                 <div className={scss.btn} css={styles.btn}>
-                                    {darkMode ? (
+                                    {darkMode === 'true' ? (
                                         <DarkModeIcon style={{ fontSize: 22 }} />
                                     ) : (
                                         <LightModeIcon style={{ fontSize: 22 }} />
@@ -186,7 +193,7 @@ export default function SettingModal({ open, setOpen }: ISettingModal) {
                                     <div className="color-black" css={styles.title}>
                                         Chế độ tối
                                     </div>
-                                    <div css={styles.desc}>Chế độ tối đang {darkMode ? 'bật' : 'tắt'}</div>
+                                    <div css={styles.desc}>Chế độ tối đang {darkMode === 'true' ? 'bật' : 'tắt'}</div>
                                 </div>
                                 <Switch
                                     checked={darkMode === 'true'}

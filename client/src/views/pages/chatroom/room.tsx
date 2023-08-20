@@ -8,9 +8,21 @@ import { Tooltip } from '@mui/material';
 import TextMessageRight from '~/components/TextMessageRight';
 import TextMessageLeft from '~/components/TextMessageLeft';
 import PendingIcon from '@mui/icons-material/Pending';
-import { Fragment, useContext, useEffect, useMemo, useRef, useState } from 'react';
-import Inputs from './Inputs';
+import { useContext, useEffect, useMemo, useRef, useState } from 'react';
+import Inputs from './Input';
 import { Context } from './ChatRoomContext';
+import { Conversation } from '~/utils/types';
+import { useSelector } from 'react-redux';
+import PictureMessageRight from '~/components/PictureMessageRight';
+import FileMessageRight from '~/components/FileMessageRight';
+import PictureMessageLeft from '~/components/PictureMessageLeft';
+import FileMessageLeft from '~/components/FileMessageLeft';
+import ActiveEmojiMessageRight from '~/components/ActiveEmojiMessageRight';
+import ActiveEmojiMessageLeft from '~/components/ActiveEmojiMessageLeft';
+
+const getFilename = (fileUrl: string) => {
+    return fileUrl.split('_')[1];
+};
 
 function Header() {
     const [showProfile, setShowProfile] = useState(true);
@@ -19,8 +31,8 @@ function Header() {
     const chatBox = useContext(Context);
     useMemo(() => {
         if (chatBox) {
-            setName(chatBox.name);
-            setAvatar(chatBox.avatar);
+            setName(chatBox.username);
+            setAvatar(chatBox.avatarUrl);
         }
     }, [chatBox]);
 
@@ -62,32 +74,68 @@ function Header() {
 }
 
 function Room() {
-    const [msgs, setMsgs] = useState([
-        <TextMessageRight>Hello World</TextMessageRight>,
-        <TextMessageLeft>What the fuck, my boy??</TextMessageLeft>,
-    ]);
+    const userDbId: string = useSelector(({ root }) => root.userDbId);
+    const chatBox = useContext(Context);
+    const [messages, setMessages] = useState<Conversation>(chatBox!.conversation);
     const msgContainerRef = useRef<HTMLDivElement>(null);
+
     useEffect(() => {
-        const handler = () => {
+        const handleScrollToTop = () => {
             setTimeout(() => {
                 msgContainerRef.current!.scrollTop = msgContainerRef.current!.scrollHeight;
             }, 100);
         };
-        window.addEventListener('scrollToTop', handler);
-        return () => window.removeEventListener('scrollToTop', handler);
+        window.addEventListener('scrollToTop', handleScrollToTop);
+        return () => {
+            window.removeEventListener('scrollToTop', handleScrollToTop);
+        };
     }, []);
+
+    useMemo(() => {
+        chatBox?.conversation && setMessages(chatBox.conversation);
+    }, [chatBox]);
 
     return (
         <div css={styles.container} className="border-r border-solid border-color">
             <Header />
             <div css={styles.body}>
                 <div css={styles.msgWrapper} ref={msgContainerRef}>
-                    {msgs.map((elem, index) => (
-                        <Fragment key={index}>{elem}</Fragment>
-                    ))}
+                    {messages.map((elem, index) => {
+                        if (elem.senderId === userDbId) {
+                            if (elem.message.type === 'text')
+                                return <TextMessageRight key={index}>{elem.message.content}</TextMessageRight>;
+                            else if (elem.message.type === 'image')
+                                return <PictureMessageRight key={index} imgUri={elem.message.content} />;
+                            else if (elem.message.type === 'icon')
+                                return <ActiveEmojiMessageRight key={index} imgUri={elem.message.content} />;
+                            else if (elem.message.type === 'file')
+                                return (
+                                    <FileMessageRight
+                                        key={index}
+                                        uri={elem.message.content}
+                                        filename={getFilename(elem.message.content)}
+                                    />
+                                );
+                        } else {
+                            if (elem.message.type === 'text')
+                                return <TextMessageLeft key={index}>{elem.message.content}</TextMessageLeft>;
+                            else if (elem.message.type === 'image')
+                                return <PictureMessageLeft key={index} imgUri={elem.message.content} />;
+                            else if (elem.message.type === 'icon')
+                                return <ActiveEmojiMessageLeft key={index} imgUri={elem.message.content} />;
+                            else if (elem.message.type === 'file')
+                                return (
+                                    <FileMessageLeft
+                                        key={index}
+                                        uri={elem.message.content}
+                                        filename={getFilename(elem.message.content)}
+                                    />
+                                );
+                        }
+                    })}
                 </div>
             </div>
-            <Inputs msgs={msgs} setMsgs={setMsgs} />
+            <Inputs messages={messages} setMessages={setMessages} />
         </div>
     );
 }

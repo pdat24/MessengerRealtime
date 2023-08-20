@@ -1,10 +1,20 @@
-type Conversation = Array<{ isOwner: boolean; content: string; type: 'text' | 'picture' | 'file' }>;
+type Message = {
+    senderId: string;
+    message: {
+        content: string;
+        type: 'text' | 'image' | 'file' | 'icon';
+    };
+};
+
+type Conversation = Array<Message>;
+
 interface IChatBox {
-    name: string;
-    avatar: string;
-    newMsg: string;
+    username: string;
+    avatarUrl: string;
+    newMessage: string;
     conversation: Conversation;
     unread?: boolean;
+    conversionId?: string;
 }
 
-export { type IChatBox, type Conversation };
+export { type IChatBox, type Conversation, type Message };

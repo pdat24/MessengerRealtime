@@ -7,16 +7,27 @@ import { Dispatch, ReactElement, SetStateAction, useEffect, useState } from 'rea
 import { emojies } from '~/utils/vars';
 import scss from '../views/pages/chatroom/chatroom.module.scss';
 
-interface IEmojiPicker {
+interface IEmojiMessage {
     setMessage: Dispatch<SetStateAction<string>>;
 }
 
-export default function EmojiPicker({ setMessage }: IEmojiPicker) {
+function decodeEmoji(filePath: string) {
+    let res = filePath.replace(
+        'https://firebasestorage.googleapis.com/v0/b/messengerrealtime-134d1.appspot.com/o/emojis%2F',
+        ''
+    );
+    res = res.split('?')[0];
+    return res;
+}
+
+export default function EmojiMessage({ setMessage }: IEmojiMessage) {
     const [open, setOpen] = useState(false);
     const [pickedEmojies, setPickedEmojies] = useState<ReactElement[]>([]);
+
     useEffect(() => {
         document.body.addEventListener('click', (e: Event) => !e.defaultPrevented && setOpen(false));
-    });
+    }, []);
+
     const handleOpen = (e: React.MouseEvent<HTMLDivElement>) => {
         e.preventDefault();
         setOpen(true);
@@ -45,7 +56,10 @@ export default function EmojiPicker({ setMessage }: IEmojiPicker) {
                                             ...pickedEmojies,
                                             <img src={emoji} css={styles.emojiDemo} />,
                                         ]);
-                                        setMessage(emoji);
+                                        setMessage(
+                                            (messages) =>
+                                                messages + String.fromCodePoint(parseInt(decodeEmoji(emoji), 16))
+                                        );
                                     }}
                                 >
                                     <img src={emoji} css={styles.emojiDemo} />

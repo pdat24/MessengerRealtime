@@ -1,11 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
+import jsCookie from 'js-cookie';
 
 const initialState = {
     topic: '',
     emoji: '',
-    APIUrls: {
-        userAPIUrl: 'https://localhost:7101/api/user',
+    APIs: {
+        user: 'https://localhost:7101/api/user',
+        friends: 'https://localhost:7101/api/friends',
+        conversation: 'https://localhost:7101/api/conversation',
     },
+    userId: jsCookie.get('user_id'),
+    userDbId: jsCookie.get('user_DbId'),
 };
 
 const rootSlice = createSlice({

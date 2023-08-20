@@ -29,4 +29,12 @@ public class AppDB
             return db.GetCollection<UserModel>("users");
         }
     }
+    public IMongoCollection<ConversationModel> Conversations
+    {
+        get
+        {
+            var db = _getDatabase();
+            return db.GetCollection<ConversationModel>("conversations");
+        }
+    }
 }

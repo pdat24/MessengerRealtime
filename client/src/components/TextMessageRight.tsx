@@ -24,7 +24,7 @@ const styles = {
         border-radius: 20px;
         width: fit-content;
         max-width: 90%;
-        margin-bottom: 2px;
+        margin-bottom: 3px;
         margin-left: auto;
         transition: all 500ms ease;
     `,

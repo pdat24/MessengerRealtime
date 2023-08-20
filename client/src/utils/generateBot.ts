@@ -36,9 +36,9 @@ function generateBot() {
     const bots: IChatBox[] = [];
     for (let i = 1; i <= 15; i++) {
         bots.push({
-            name: botName[Math.round(Math.random() * (botName.length - 1))],
-            avatar: avatars[Math.round(Math.random() * (avatars.length - 1))],
-            newMsg: "Hi developer! I'm a bot.",
+            username: botName[Math.round(Math.random() * (botName.length - 1))],
+            avatarUrl: avatars[Math.round(Math.random() * (avatars.length - 1))],
+            newMessage: "Hi developer! I'm a bot.",
             conversation: [],
         });
     }

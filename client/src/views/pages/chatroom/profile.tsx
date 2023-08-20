@@ -134,8 +134,8 @@ function Profile() {
     const chatBox = useContext(Context);
     useMemo(() => {
         if (chatBox) {
-            setName(chatBox.name);
-            setAvatar(chatBox.avatar);
+            setName(chatBox.username);
+            setAvatar(chatBox.avatarUrl);
         }
     }, [chatBox]);
 

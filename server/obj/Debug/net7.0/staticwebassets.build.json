@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "hFLMg+wrto4Ts346aUIo/8O2H208ImZ0APYa5hI6qHo=",
+  "Hash": "lMZgAW7UjKjU/aQdR1bRbUcUT6//jVWERNIKfTHNhSQ=",
   "Source": "server",
   "BasePath": "_content/server",
   "Mode": "Default",
@@ -221,12 +221,12 @@
       "OriginalItemSpec": "wwwroot\\assets\\female-10-ede1ddfa.jpg"
     },
     {
-      "Identity": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\index-020d5c7e.css",
+      "Identity": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\index-80c3b317.css",
       "SourceId": "server",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\",
       "BasePath": "_content/server",
-      "RelativePath": "assets/index-020d5c7e.css",
+      "RelativePath": "assets/index-80c3b317.css",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -235,15 +235,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\index-020d5c7e.css"
+      "OriginalItemSpec": "wwwroot\\assets\\index-80c3b317.css"
     },
     {
-      "Identity": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\index-a05b8009.js",
+      "Identity": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\index-efe1ed84.js",
       "SourceId": "server",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\",
       "BasePath": "_content/server",
-      "RelativePath": "assets/index-a05b8009.js",
+      "RelativePath": "assets/index-efe1ed84.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -252,7 +252,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\index-a05b8009.js"
+      "OriginalItemSpec": "wwwroot\\assets\\index-efe1ed84.js"
     },
     {
       "Identity": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\male-01-63aab7b5.jpg",

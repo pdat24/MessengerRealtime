@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 
 function TextMessageLeft({ children }: { children: string }) {
     return (
-        <div css={styles.container}>
+        <div css={styles.container} className="mt-1">
             <span css={styles.text}>{children}</span>
         </div>
     );
@@ -15,7 +15,7 @@ const styles = {
         border-radius: 20px;
         width: fit-content;
         max-width: 90%;
-        margin-bottom: 2px;
+        margin-bottom: 3px;
         margin-right: auto;
         background-color: var(--leftmsg-bg);
     `,

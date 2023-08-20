@@ -2,35 +2,37 @@
 import clsx from 'clsx';
 import style from './layout.module.scss';
 import MarkChatUnreadIcon from '@mui/icons-material/MarkChatUnread';
-import InventoryIcon from '@mui/icons-material/Inventory';
 import PeopleIcon from '@mui/icons-material/People';
 import { NavLink } from 'react-router-dom';
 import { css } from '@emotion/react';
 import ArrowCircleLeftOutlinedIcon from '@mui/icons-material/ArrowCircleLeftOutlined';
 import ArrowCircleRightOutlinedIcon from '@mui/icons-material/ArrowCircleRightOutlined';
 import { Avatar, Fab, Tooltip } from '@mui/material';
-import { useMemo, useRef, useState } from 'react';
-import SpeakerNotesOffIcon from '@mui/icons-material/SpeakerNotesOff';
+import { useMemo, useState } from 'react';
 import SettingModal from '~/components/SettingModal';
 import axios from 'axios';
-import jsCookie from 'js-cookie';
 import { useSelector } from 'react-redux';
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import Diversity3Icon from '@mui/icons-material/Diversity3';
 
 function Sidebar() {
-    const userAPIUrl = useSelector(({ root }) => root.APIUrls.userAPIUrl);
+    const userAPIUrl = useSelector(({ root }) => root.APIs.user);
     const [shrink, setShrink] = useState(false);
     const [showSetting, setShowSetting] = useState(false);
     const [username, setUsername] = useState('');
-    const userId = useRef(jsCookie.get('user_id'));
+    const userId = useSelector(({ root }) => root.userId);
     const [avatarUrl, setAvatarUrl] = useState('');
     const hiddneWhenShrink = css`
         display: ${shrink ? 'none' : 'inline-block'};
     `;
     useMemo(() => {
-        axios.get(`${userAPIUrl}/${userId.current}`).then((res) => {
+        axios.get(`${userAPIUrl}/${userId}`).then((res) => {
             setUsername(res.data.username);
             setAvatarUrl(res.data.avatarUrl);
         });
+        const handleChangeAvatar = (e: CustomEventInit) => setAvatarUrl(e.detail);
+        window.addEventListener('changeAvatar', handleChangeAvatar);
+        return () => window.removeEventListener('changeAvatar', handleChangeAvatar);
     }, []);
 
     return (
@@ -118,9 +120,9 @@ const styles = {
 
 const links = [
     { icon: <MarkChatUnreadIcon css={styles.icon} />, title: 'Chat', path: '/' },
-    { icon: <PeopleIcon css={styles.icon} />, title: 'Kết bạn', path: '/friends' },
-    { icon: <InventoryIcon css={styles.icon} />, title: 'Kho lưu trữ', path: '/archive' },
-    { icon: <SpeakerNotesOffIcon css={styles.icon} />, title: 'Danh sách chặn', path: '/unread' },
+    { icon: <PersonAddIcon css={styles.icon} />, title: 'Kết bạn', path: '/friends' },
+    { icon: <PeopleIcon css={styles.icon} />, title: 'Lời mời kết bạn', path: '/friend-requets' },
+    { icon: <Diversity3Icon css={styles.icon} />, title: 'Nhóm chat', path: '/groups' },
 ];
 
 export default Sidebar;

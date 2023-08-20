@@ -7,10 +7,10 @@ import { IChatBox } from '~/utils/types';
 function ChatRoom() {
     const [selectedChat, setSelectedChat] = useState(false);
     const [chatBox, setChatBox] = useState<IChatBox>({
-        name: '',
-        avatar: '',
+        username: '',
+        avatarUrl: '',
         conversation: [],
-        newMsg: '',
+        newMessage: '',
     });
 
     useEffect(() => {

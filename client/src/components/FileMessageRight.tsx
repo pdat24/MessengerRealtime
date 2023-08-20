@@ -2,7 +2,7 @@
 import { css } from '@emotion/react';
 import DownloadForOfflineIcon from '@mui/icons-material/DownloadForOffline';
 
-function FileMessage({ filename, uri }: { filename: string; uri: string }) {
+function FileMessageRight({ filename, uri }: { filename: string; uri: string }) {
     const style = css`
         border-radius: 16px;
         background-color: var(--secondary-color3);
@@ -25,4 +25,4 @@ function FileMessage({ filename, uri }: { filename: string; uri: string }) {
     );
 }
 
-export default FileMessage;
+export default FileMessageRight;

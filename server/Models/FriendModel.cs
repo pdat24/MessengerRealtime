@@ -1,10 +1,13 @@
 ﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace server.Models
 {
     public class FriendModel
     {
-        public ObjectId friendId { get; set; }
-        public IEnumerable<MessageModel> conversion { get; set; } = new List<MessageModel>();
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string friendId { get; set; } = "";
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string conversationId { get; set; } = "";
     }
 }
