@@ -35,6 +35,7 @@ function Chat() {
     const haveNewFriend = useSelector(({ root }) => root.haveNewFriend);
     const latestMessageAPIPath = useSelector(({ root }) => root.APIs.latestMessage);
     const userId = useSelector(({ root }) => root.userId);
+    const userDbId = useSelector(({ root }) => root.userDbId);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -53,7 +54,7 @@ function Chat() {
 
     useMemo(() => {
         // data fetching
-        if (friendList.length === 0 || haveNewFriend) {
+        if (friendList.length === 0 || (haveNewFriend && userId)) {
             axios.get(`${friendAPI}/${userId}`).then((res) => {
                 dispatch(setFriendList(res.data));
                 setFriends(res.data);
@@ -67,7 +68,7 @@ function Chat() {
     }, []);
 
     const handleChooseConversion = async (friend: IFriendInfo) => {
-        axios.put(`${latestMessageAPIPath}/${userId}/${friend.id}/read`);
+        axios.put(`${latestMessageAPIPath}/${userDbId}/${friend.id}/read`);
         const res = await axios.get(`${conversationAPI}/${friend.conversationId}`);
         const chatRoomInfo: IChatBox = {
             username: friend.username,
@@ -76,6 +77,16 @@ function Chat() {
             conversionId: friend.conversationId,
             friendId: friend.id,
         };
+        dispatch(
+            setFriendList(
+                friendList.map((f) => {
+                    if (f.id === friend.id) {
+                        return { ...f, read: true };
+                    }
+                    return f;
+                })
+            )
+        );
         window.dispatchEvent(new CustomEvent('selectedAChat', { detail: chatRoomInfo }));
         window.dispatchEvent(new CustomEvent('scrollToBottom'));
     };

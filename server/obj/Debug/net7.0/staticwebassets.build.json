@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "NSTrHSvOt5H2qN565RODT+Cv5PE2VoaGj4KzUoz5LSA=",
+  "Hash": "gvSC+6WVNw+AEovB+qMl63dcLGyQgCvnltBTo4Gj5NY=",
   "Source": "server",
   "BasePath": "_content/server",
   "Mode": "Default",
@@ -170,12 +170,12 @@
       "OriginalItemSpec": "wwwroot\\assets\\female-10-ede1ddfa.jpg"
     },
     {
-      "Identity": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\index-5c128ad1.js",
+      "Identity": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\index-34a1f521.js",
       "SourceId": "server",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\",
       "BasePath": "_content/server",
-      "RelativePath": "assets/index-5c128ad1.js",
+      "RelativePath": "assets/index-34a1f521.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -184,7 +184,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\index-5c128ad1.js"
+      "OriginalItemSpec": "wwwroot\\assets\\index-34a1f521.js"
     },
     {
       "Identity": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\index-8045220d.css",

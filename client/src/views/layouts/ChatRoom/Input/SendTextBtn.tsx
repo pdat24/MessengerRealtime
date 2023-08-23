@@ -4,7 +4,7 @@ import scss from '../chatroom.module.scss';
 import clsx from 'clsx';
 import { Tooltip } from '@mui/material';
 import SendRoundedIcon from '@mui/icons-material/SendRounded';
-import { useContext, useState } from 'react';
+import { useContext, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import scrollToBottom from './scrollToBottom';
 import EmojiMessage from '~/components/EmojiMessage';
@@ -13,6 +13,8 @@ import axios from 'axios';
 import { Context } from '../ChatRoomContext';
 import { Message } from '~/utils/types';
 import { useUpdateLatestMessage } from '~/utils/hooks';
+import { connection } from '~/utils/functions/chatOnline';
+import receiveOnlineMessage from '~/utils/functions/receiveOnlineMessage';
 
 function SendTextBtn({ setMessages }: ITextInput) {
     const userDbId: string = useSelector(({ root }) => root.userDbId);
@@ -20,6 +22,14 @@ function SendTextBtn({ setMessages }: ITextInput) {
     const [text, setText] = useState('');
     const chatRoomInfo = useContext(Context);
     const updateLatestMessage = useUpdateLatestMessage();
+
+    useMemo(() => {
+        receiveOnlineMessage({
+            type: 'text',
+            onSetMessages: setMessages,
+            onUpdateLatestMessage: updateLatestMessage,
+        });
+    }, []);
 
     const handleSendText = () => {
         if (text) {
@@ -35,6 +45,7 @@ function SendTextBtn({ setMessages }: ITextInput) {
             chatRoomInfo?.friendId && updateLatestMessage(newMessage, chatRoomInfo.friendId);
             setText('');
             scrollToBottom();
+            connection.send('SendPrivateMessage', userDbId, chatRoomInfo?.friendId, text, 'text');
         }
     };
 
@@ -55,7 +66,7 @@ function SendTextBtn({ setMessages }: ITextInput) {
                     onChange={(e) => setText(e.target.value)}
                 />
                 <Tooltip placement="top" title="Gửi" arrow>
-                    <div className={scss.btn} css={styles.emoji} onClick={handleSendText}>
+                    <div className={scss.btn} css={styles.emoji} onClick={() => handleSendText()}>
                         <SendRoundedIcon className={clsx(scss.icon, 'fs-22')} />
                     </div>
                 </Tooltip>

@@ -1,6 +1,7 @@
 import routes from './routes';
 import DefaultLayout from './views/layouts/Default';
 import { Routes, Route } from 'react-router-dom';
+import '~/utils/functions/chatOnline';
 
 function App() {
     return (

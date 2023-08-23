@@ -4,7 +4,7 @@ import scss from '../chatroom.module.scss';
 import clsx from 'clsx';
 import { Tooltip } from '@mui/material';
 import scrollToBottom from './scrollToBottom';
-import { useContext, useRef } from 'react';
+import { useContext, useMemo, useRef } from 'react';
 import { Context } from '../ChatRoomContext';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
@@ -14,6 +14,8 @@ import storage from '~/firebase/storage';
 import { v4 } from 'uuid';
 import { ITextInput } from './inputTypes';
 import { useUpdateLatestMessage } from '~/utils/hooks';
+import receiveOnlineMessage from '~/utils/functions/receiveOnlineMessage';
+import { connection } from '~/utils/functions/chatOnline';
 
 function SendImageBtn({ setMessages }: ITextInput) {
     const userDbId: string = useSelector(({ root }) => root.userDbId);
@@ -21,6 +23,14 @@ function SendImageBtn({ setMessages }: ITextInput) {
     const chatRoomInfo = useContext(Context);
     const pictureInput = useRef<HTMLInputElement>(null);
     const updateLatestMessage = useUpdateLatestMessage();
+
+    useMemo(() => {
+        receiveOnlineMessage({
+            type: 'image',
+            onSetMessages: setMessages,
+            onUpdateLatestMessage: updateLatestMessage,
+        });
+    }, []);
 
     const handleSendPicture = async () => {
         if (pictureInput.current?.files) {
@@ -57,6 +67,7 @@ function SendImageBtn({ setMessages }: ITextInput) {
                     await axios.post(`${conversationAPI}/${chatRoomInfo?.conversionId}`, newMessage, {
                         headers: { 'Content-Type': 'Application/json' },
                     });
+                    connection.send('SendPrivateMessage', userDbId, chatRoomInfo?.friendId, pictureUrl, 'image');
                 }
             }
         }

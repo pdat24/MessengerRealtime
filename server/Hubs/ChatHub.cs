@@ -2,7 +2,7 @@
 
 namespace server.Hubs
 {
-    public class UserHub : Hub
+    public class ChatHub : Hub
     {
         public async Task SendPrivateMessage(string senderId, string receiverId, string message, string type)
         {

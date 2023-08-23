@@ -21,12 +21,12 @@ public partial class LatestMessageController : ControllerBase
         await Update(friendDbId, userDbId, newMessage);
     }
 
-    // [PUT]::/api/latestMessage/{userId}/{friendDbId}/{state}
-    [Route("{userId}/{friendDbId}/{state}")]
+    // [PUT]::/api/latestMessage/{userDbId}/{friendDbId}/{state}
+    [Route("{userDbId}/{friendDbId}/{state}")]
     [HttpPut]
-    public async Task ChangeReadState(string userId, string friendDbId, string state)
+    public async Task ChangeReadState(string userDbId, string friendDbId, string state)
     {
-        var users = await _db.Users.FindAsync(user => user.userId == userId);
+        var users = await _db.Users.FindAsync(user => user.Id == userDbId);
         var user = users.FirstOrDefault();
         bool changed = true;
         // mutate latest message
@@ -42,7 +42,7 @@ public partial class LatestMessageController : ControllerBase
         // clone new friend collection
         if (changed)
         {
-            var filter = Builders<UserModel>.Filter.Eq("userId", userId);
+            var filter = Builders<UserModel>.Filter.Eq("Id", userDbId);
             var update = Builders<UserModel>.Update.Set("friends", user.friends);
             await _db.Users.UpdateOneAsync(filter, update);
         }
@@ -70,4 +70,3 @@ public partial class LatestMessageController
         await _db.Users.UpdateOneAsync(filter, update);
     }
 }
-

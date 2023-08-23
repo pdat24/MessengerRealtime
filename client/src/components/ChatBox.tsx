@@ -26,6 +26,10 @@ function ChatBox({ username, latestMessage, avatarUrl, read, conversation, frien
                 setNewMsg(renderNewMessage(userDbId, e.detail.content));
             }
         });
+
+        window.addEventListener('changeToUnreadMessage', (e: CustomEventInit) => {
+            if (e.detail === friendId) setReadMsg(false);
+        });
     });
 
     const handleClick = () => {

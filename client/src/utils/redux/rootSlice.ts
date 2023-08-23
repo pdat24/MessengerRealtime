@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import jsCookie from 'js-cookie';
 import { IFriendInfo, Message } from '../types';
 
 interface IStateSchema {
@@ -29,8 +28,8 @@ const initialState: IStateSchema = {
         conversation: 'https://localhost:7101/api/conversation',
         latestMessage: 'https://localhost:7101/api/latestMessage',
     },
-    userId: jsCookie.get('user_id'),
-    userDbId: jsCookie.get('user_DbId'),
+    userId: sessionStorage.getItem('user_id')!,
+    userDbId: sessionStorage.getItem('user_DbId')!,
     friendList: [],
     friendRequestsSent: [],
     haveNewFriend: false,

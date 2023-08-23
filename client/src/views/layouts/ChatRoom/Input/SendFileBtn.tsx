@@ -3,7 +3,7 @@ import AttachFileOutlinedIcon from '@mui/icons-material/AttachFileOutlined';
 import scss from '../chatroom.module.scss';
 import clsx from 'clsx';
 import { Tooltip } from '@mui/material';
-import { useContext, useRef } from 'react';
+import { useContext, useMemo, useRef } from 'react';
 import scrollToBottom from './scrollToBottom';
 import { v4 } from 'uuid';
 import { Message } from '~/utils/types';
@@ -14,6 +14,8 @@ import { getDownloadURL, listAll, ref, uploadBytes } from 'firebase/storage';
 import storage from '~/firebase/storage';
 import axios from 'axios';
 import { useUpdateLatestMessage } from '~/utils/hooks';
+import receiveOnlineMessage from '~/utils/functions/receiveOnlineMessage';
+import { connection } from '~/utils/functions/chatOnline';
 
 export default function SendFileBtn({ setMessages }: ITextInput) {
     const userDbId: string = useSelector(({ root }) => root.userDbId);
@@ -21,6 +23,14 @@ export default function SendFileBtn({ setMessages }: ITextInput) {
     const chatRoomInfo = useContext(Context);
     const fileInput = useRef<HTMLInputElement>(null);
     const updateLatestMessage = useUpdateLatestMessage();
+
+    useMemo(() => {
+        receiveOnlineMessage({
+            type: 'file',
+            onSetMessages: setMessages,
+            onUpdateLatestMessage: updateLatestMessage,
+        });
+    }, []);
 
     const handleSendFile = async () => {
         if (fileInput.current?.files) {
@@ -51,6 +61,7 @@ export default function SendFileBtn({ setMessages }: ITextInput) {
                     await axios.post(`${conversationAPI}/${chatRoomInfo?.conversionId}`, newMessage, {
                         headers: { 'Content-Type': 'Application/json' },
                     });
+                    connection.send('SendPrivateMessage', userDbId, chatRoomInfo?.friendId, fileUrl, 'file');
                 }
             }
         }
