@@ -4,7 +4,7 @@ import Modal from '@mui/material/Modal';
 import CloseIcon from '@mui/icons-material/Close';
 import { css } from '@emotion/react';
 import { Dispatch, SetStateAction } from 'react';
-import scss from '../views/pages/chatroom/chatroom.module.scss';
+import scss from '../views/layouts/ChatRoom/chatroom.module.scss';
 import { topics } from '~/utils/vars';
 import { useDispatch } from 'react-redux';
 import { setTopic } from '~/utils/redux/rootSlice';

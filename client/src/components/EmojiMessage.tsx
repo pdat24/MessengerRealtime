@@ -5,7 +5,7 @@ import { Tooltip } from '@mui/material';
 import clsx from 'clsx';
 import { Dispatch, ReactElement, SetStateAction, useEffect, useState } from 'react';
 import { emojies } from '~/utils/vars';
-import scss from '../views/pages/chatroom/chatroom.module.scss';
+import scss from '../views/layouts/chatroom/chatroom.module.scss';
 
 interface IEmojiMessage {
     setMessage: Dispatch<SetStateAction<string>>;

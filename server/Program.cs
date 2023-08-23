@@ -1,4 +1,5 @@
 using server.Db;
+using server.Hubs;
 using server.Utils;
 
 string policyName = "clientApp";
@@ -7,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSignalR();
 builder.Services.AddScoped<AppDB>();
 builder.Services.AddSingleton<IUtilsContainer, UtilsContainer>();
 builder.Services.AddCors(options =>
@@ -38,5 +40,6 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapDefaultControllerRoute();
+app.MapHub<UserHub>("/hub/users");
 
 app.Run();

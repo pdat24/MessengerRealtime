@@ -120,8 +120,8 @@ const styles = {
 
 const links = [
     { icon: <MarkChatUnreadIcon css={styles.icon} />, title: 'Chat', path: '/' },
-    { icon: <PersonAddIcon css={styles.icon} />, title: 'Kết bạn', path: '/friends' },
-    { icon: <PeopleIcon css={styles.icon} />, title: 'Lời mời kết bạn', path: '/friend-requets' },
+    { icon: <PersonAddIcon css={styles.icon} />, title: 'Kết bạn', path: '/make-friend' },
+    { icon: <PeopleIcon css={styles.icon} />, title: 'Lời mời kết bạn', path: '/friend-requests' },
     { icon: <Diversity3Icon css={styles.icon} />, title: 'Nhóm chat', path: '/groups' },
 ];
 

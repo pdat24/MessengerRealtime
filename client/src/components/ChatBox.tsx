@@ -1,41 +1,75 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import { IChatBox } from '~/utils/types';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { IChatBox, Message } from '~/utils/types';
 
-function ChatBox({ username, newMessage, avatarUrl, unread, conversation }: IChatBox) {
+const renderNewMessage = (userDbId: string, message?: Message) => {
+    let result = '';
+    if (message) {
+        if (message.message.type === 'text') result = message.message.content;
+        else if (message.message.type === 'file') result = 'Đã gửi tệp đính kèm';
+        else if (message.message.type === 'image') result = 'Đã gửi ảnh';
+        else if (message.message.type === 'icon') result = 'Đã gửi biểu tượng';
+        if (message.senderId === userDbId) result = 'Bạn: ' + result;
+    }
+    return result;
+};
+
+function ChatBox({ username, latestMessage, avatarUrl, read, conversation, friendId }: IChatBox) {
+    const userDbId = useSelector(({ root }) => root.userDbId);
+    const [newMsg, setNewMsg] = useState(renderNewMessage(userDbId, latestMessage));
+    const [readMsg, setReadMsg] = useState(read);
+    useEffect(() => {
+        window.addEventListener('sentNewMessage', (e: CustomEventInit) => {
+            if (e.detail.friendId === friendId) {
+                setNewMsg(renderNewMessage(userDbId, e.detail.content));
+            }
+        });
+    });
+
     const handleClick = () => {
         window.dispatchEvent(
             new CustomEvent('selectedAChat', {
                 detail: {
                     username,
-                    newMessage,
                     avatarUrl,
-                    unread,
                     conversation,
                 },
             })
         );
+        setReadMsg(true);
     };
 
     return (
         <div css={styles.container} onClick={handleClick}>
-            <div className="flex gap-2 items-center">
-                <img src={avatarUrl} alt="avatar" css={styles.avatar} />
-                <div>
-                    <h6 css={styles.name}>{username}</h6>
-                    <span css={unread ? styles.unreadMsg : styles.readMsg}>{newMessage}</span>
+            <div className="flex gap-2 items-center w-full">
+                <img src={avatarUrl} alt="avatar" css={styles.avatar} className="shrink-0" />
+                <div className="overflow-hidden flex-grow">
+                    <h6 css={styles.name} className="mb-1">
+                        {username}
+                    </h6>
+                    <span css={!readMsg ? styles.unreadMsg : styles.readMsg}>{newMsg}</span>
                 </div>
-            </div>
-            <div css={styles.right}>
-                {unread ? (
-                    <div css={styles.unreadDot}></div>
-                ) : (
-                    <img src={avatarUrl} alt="avatar" css={styles.subAvatar} />
-                )}
+                <div css={styles.right} className="shrink-0">
+                    {!readMsg ? (
+                        <div css={styles.unreadDot}></div>
+                    ) : (
+                        <img src={avatarUrl} alt="avatar" css={styles.subAvatar} />
+                    )}
+                </div>
             </div>
         </div>
     );
 }
+
+const newMessage = css`
+    white-space: nowrap;
+    display: block;
+    width: 90%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+`;
 
 const styles = {
     container: css`
@@ -62,11 +96,13 @@ const styles = {
         line-height: 20px;
     `,
     unreadMsg: css`
+        ${newMessage}
         font-size: 13px;
         color: var(--text-color);
         font-weight: 600;
     `,
     readMsg: css`
+        ${newMessage}
         font-size: 13px;
         color: #a3a3a3;
     `,

@@ -8,6 +8,6 @@ namespace server.Models
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; } = "";
-        public List<MessageModel> conversation { get; set; } = new List<MessageModel>();
+        public List<MessageModel> conversation { get; set; } = new();
     }
 }

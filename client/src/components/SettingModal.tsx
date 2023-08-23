@@ -8,7 +8,7 @@ import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import { css } from '@emotion/react';
 import { Dispatch, SetStateAction, useMemo, useState } from 'react';
-import scss from '../views/pages/chatroom/chatroom.module.scss';
+import scss from '../views/layouts/chatroom/chatroom.module.scss';
 import { Button, Switch, TextField } from '@mui/material';
 import jsCookie from 'js-cookie';
 import axios from 'axios';

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "lMZgAW7UjKjU/aQdR1bRbUcUT6//jVWERNIKfTHNhSQ=",
+  "Hash": "NSTrHSvOt5H2qN565RODT+Cv5PE2VoaGj4KzUoz5LSA=",
   "Source": "server",
   "BasePath": "_content/server",
   "Mode": "Default",
@@ -49,57 +49,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\server.bundle.scp.css"
-    },
-    {
-      "Identity": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\1f63c-686ed5ce.png",
-      "SourceId": "server",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\",
-      "BasePath": "_content/server",
-      "RelativePath": "assets/1f63c-686ed5ce.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\1f63c-686ed5ce.png"
-    },
-    {
-      "Identity": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\1f923-84812cac.png",
-      "SourceId": "server",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\",
-      "BasePath": "_content/server",
-      "RelativePath": "assets/1f923-84812cac.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\1f923-84812cac.png"
-    },
-    {
-      "Identity": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\1f970-e09651eb.png",
-      "SourceId": "server",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\",
-      "BasePath": "_content/server",
-      "RelativePath": "assets/1f970-e09651eb.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\1f970-e09651eb.png"
     },
     {
       "Identity": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\favicon-ace07af6.ico",
@@ -221,12 +170,12 @@
       "OriginalItemSpec": "wwwroot\\assets\\female-10-ede1ddfa.jpg"
     },
     {
-      "Identity": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\index-80c3b317.css",
+      "Identity": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\index-5c128ad1.js",
       "SourceId": "server",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\",
       "BasePath": "_content/server",
-      "RelativePath": "assets/index-80c3b317.css",
+      "RelativePath": "assets/index-5c128ad1.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -235,15 +184,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\index-80c3b317.css"
+      "OriginalItemSpec": "wwwroot\\assets\\index-5c128ad1.js"
     },
     {
-      "Identity": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\index-efe1ed84.js",
+      "Identity": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\index-8045220d.css",
       "SourceId": "server",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\",
       "BasePath": "_content/server",
-      "RelativePath": "assets/index-efe1ed84.js",
+      "RelativePath": "assets/index-8045220d.css",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -252,7 +201,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\index-efe1ed84.js"
+      "OriginalItemSpec": "wwwroot\\assets\\index-8045220d.css"
     },
     {
       "Identity": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\male-01-63aab7b5.jpg",

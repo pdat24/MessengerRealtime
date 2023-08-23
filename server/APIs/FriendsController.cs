@@ -2,16 +2,19 @@
 using server.Db;
 using MongoDB.Driver;
 using server.Models;
+using MongoDB.Bson;
 
 namespace server.APIs;
 
-[Route("api/[controller]/{userID}")]
+[Route("api/[controller]")]
 [ApiController]
-public class FriendsController : ControllerBase
+public partial class FriendsController : ControllerBase
 {
     private readonly AppDB _db;
     public FriendsController(AppDB db) => _db = db;
+
     // [GET]::/api/friends/{userId}
+    [Route("{userID}")]
     [HttpGet]
     public async Task<List<FriendAPIRepresent>> Get(string userId)
     {
@@ -27,12 +30,28 @@ public class FriendsController : ControllerBase
         await friendsInDB.ForEachAsync(friend =>
         {
             var conversationId = targetUser.friends[friendIndex].conversationId;
-            friends.Add(new FriendAPIRepresent(friend.username, friend.avatarUrl, conversationId));
+            var latestMessage = targetUser.friends[friendIndex].latestMessage;
+            var read = targetUser.friends[friendIndex].read;
+            friends.Add(new FriendAPIRepresent(friend.username, friend.avatarUrl, conversationId, friend.Id, latestMessage, read));
             friendIndex++;
         });
 
         return friends;
     }
+
+    // [DELETE]::/api/friends/{userDbId}/{friendDbId}
+    [Route("{userDbId}/{friendDbId}")]
+    [HttpDelete]
+    public async Task Delete(string userDbId, string friendDbId)
+    {
+        await Unfriend(userDbId, friendDbId);
+        await Unfriend(friendDbId, userDbId);
+    }
+}
+
+
+public partial class FriendsController
+{
     private static List<string> GetFriendIds(UserModel user)
     {
         // friend id container
@@ -50,6 +69,25 @@ public class FriendsController : ControllerBase
         var friendsInDB = await _db.Users.FindAsync(user => friendIds.Contains(user.Id));
         return friendsInDB;
     }
+    public async Task Unfriend(string userDbId, string friendDbId)
+    {
+        var user = (await _db.Users.FindAsync(user => user.Id == userDbId)).FirstOrDefault();
+        object conversationId = ObjectId.GenerateNewId().ToString();
+        var newFriendList = user.friends.Where(friend =>
+        {
+            if (friend.friendId == friendDbId)
+                conversationId = friend.conversationId;
+
+            return friend.friendId != friendDbId;
+        }).ToList();
+        // remove conversation
+        await _db.Conversations.DeleteOneAsync(Builders<ConversationModel>.Filter.Eq("Id", conversationId));
+        var filter = Builders<UserModel>.Filter.Eq("Id", userDbId);
+        var update = Builders<UserModel>.Update.Set("friends", newFriendList);
+        await _db.Users.UpdateOneAsync(filter, update);
+    }
+
 }
 
-public record FriendAPIRepresent(string username, string avatarUrl, string conversationId);
+
+public record FriendAPIRepresent(string Username, string AvatarUrl, string ConversationId, string Id, MessageModel LatestMessage, bool read);

@@ -1,9 +1,9 @@
-import { Groups, ChatRoom, Friends, FriendRequests } from '../views/pages';
+import { Groups, Chat, MakeFriend, FriendRequests } from '../views/pages';
 
 export default [
-    { path: '/', component: ChatRoom },
-    { path: '/chatroom', component: ChatRoom },
-    { path: '/friends', component: Friends },
+    { path: '/', component: Chat },
+    { path: '/chatroom', component: Chat },
+    { path: '/make-friend', component: MakeFriend },
     { path: '/friend-requests', component: FriendRequests },
     { path: '/groups', component: Groups },
 ];
