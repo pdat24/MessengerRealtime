@@ -8,5 +8,13 @@ namespace server.Hubs
         {
             await Clients.All.SendAsync("sentAPrivateMessage", senderId, receiverId, message, type);
         }
+        public async Task UserOnline(string userDbId)
+        {
+            await Clients.All.SendAsync("userOnline", userDbId);
+        }
+        public async Task UserOffline(string userDbId)
+        {
+            await Clients.All.SendAsync("userOffline", userDbId);
+        }
     }
 }

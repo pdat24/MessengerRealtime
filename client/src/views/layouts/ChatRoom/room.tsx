@@ -20,10 +20,7 @@ import FileMessageLeft from '~/components/FileMessageLeft';
 import ActiveEmojiMessageRight from '~/components/ActiveEmojiMessageRight';
 import ActiveEmojiMessageLeft from '~/components/ActiveEmojiMessageLeft';
 import SouthIcon from '@mui/icons-material/South';
-
-const getFilename = (fileUrl: string) => {
-    return fileUrl.split('_')[1];
-};
+import getFilename from '~/utils/functions/getFilename';
 
 function ScrollToBottomBtn() {
     const wrapperStyle = css`

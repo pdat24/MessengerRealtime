@@ -10,6 +10,7 @@ interface IStateSchema {
         friendRequests: string;
         conversation: string;
         latestMessage: string;
+        messagesViaType: string;
     };
     userId: string | undefined;
     userDbId: string | undefined;
@@ -27,6 +28,7 @@ const initialState: IStateSchema = {
         friendRequests: 'https://localhost:7101/api/friendRequests',
         conversation: 'https://localhost:7101/api/conversation',
         latestMessage: 'https://localhost:7101/api/latestMessage',
+        messagesViaType: 'https://localhost:7101/api/messages',
     },
     userId: sessionStorage.getItem('user_id')!,
     userDbId: sessionStorage.getItem('user_DbId')!,
