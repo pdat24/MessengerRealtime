@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "gvSC+6WVNw+AEovB+qMl63dcLGyQgCvnltBTo4Gj5NY=",
+  "Hash": "fWpuz5coP/pi7hGRjYSDiJI+cpJox13G4C22KV8mSzs=",
   "Source": "server",
   "BasePath": "_content/server",
   "Mode": "Default",
@@ -372,6 +372,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\imgs\\loginbg.png"
+    },
+    {
+      "Identity": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\js\\login.js",
+      "SourceId": "server",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\",
+      "BasePath": "_content/server",
+      "RelativePath": "js/login.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\login.js"
+    },
+    {
+      "Identity": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\js\\signup.js",
+      "SourceId": "server",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\",
+      "BasePath": "_content/server",
+      "RelativePath": "js/signup.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\signup.js"
     },
     {
       "Identity": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\js\\site.js",

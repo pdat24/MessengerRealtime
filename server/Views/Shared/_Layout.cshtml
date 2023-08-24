@@ -9,22 +9,25 @@
     </head>
     <body>
         <main>
-        <div class="main">
-            <div class="leftWrapper">
-                <div class="left">
-                    <img src="/favicon.ico" alt="favicon" class="favicon" />
-                    <h1 class="title">Tụ họp mọi lúc, mọi nơi</h1>
-                    <p class="desc">
-                        Với Messenger, việc kết nối với những người mình yêu mến thật đơn giản và thú vị.
-                    </p>
-                    @RenderBody()
-                </div>
+            <div class="main">
+                @RenderSection("Alert", false)
+                <div class="d-flex align-items-center">
+                    <div class="leftWrapper">
+                        <div class="left">
+                            <img src="/favicon.ico" alt="favicon" class="favicon" />
+                            <h1 class="title">Tụ họp mọi lúc, mọi nơi</h1>
+                            <p class="desc">
+                                Với Messenger, việc kết nối với những người mình yêu mến thật đơn giản và thú vị.
+                            </p>
+                            @RenderBody()
+                        </div>
 
+                    </div>
+                    <div class="right">
+                        <img class="w-100" src="/imgs/loginbg.png" alt="bg" />
+                    </div>
+                </div>
             </div>
-            <div class="right">
-                <img class="w-100" src="/imgs/loginbg.png" alt="bg" />
-            </div>
-        </div>
         </main>
         <script src="~/lib/jquery/dist/jquery.min.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

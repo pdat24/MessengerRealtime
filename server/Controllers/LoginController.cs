@@ -38,6 +38,7 @@ namespace server.Controllers
                 Response.Cookies.Append("user_DbId", userDbId);
                 return Redirect("/");
             }
+            TempData["loginFail"] = true;
             return View();
         }
     }

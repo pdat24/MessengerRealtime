@@ -1,11 +1,25 @@
 ﻿@{
     ViewData["title"] = "Đăng nhập";
 }
+@if (Convert.ToBoolean(TempData["loginFail"]))
+{
+    @section Alert {
+        <div class="alertWrapper">
+            <div style="max-width: 50%" class="alert alert-danger d-flex align-items-center gap-2" role="alert">
+                <span class="flex-grow-1">Thông tin đăng nhập không chính xác!</span>
+                <button onclick="closeAlert()" class="btn btn-close"></button>
+            </div>
+        </div>
+    }
+}
 
 <div>
-    <form action="/login" method="post" class="form">
-        <input name="userId" minLength=5 class="input mb-3" type="text" placeholder="ID đăng nhập" required />
-        <input name="password" class="input" type="password" placeholder="Mật khẩu" required minLength=5 />
+    <form action="/login" method="post" class="form loginForm">
+        <input name="userId" minLength=8 class="input mb-3" type="text" placeholder="ID đăng nhập" required id="userIdField" />
+        <input name="password" class="input" type="password" placeholder="Mật khẩu" required minLength=8 id="passwordField" />
+        <p class="mt-1 info-text text-danger formAlert mt-2" style="display: none; font-weight: 500;">
+            ID và mật khẩu chứa tối thiểu 8 ký tự bao gồm: a-z, A-Z, 0-9
+        </p>
         <div class="d-flex justify-content-between align-items-center mt-4 flex-wrap gap-2">
             <button class="loginBtn" type="submit">
                 Đăng nhập
@@ -19,3 +33,6 @@
         </div>
     </form>
 </div>
+@section Scripts {
+    <script src="/js/login.js"></script>
+}
