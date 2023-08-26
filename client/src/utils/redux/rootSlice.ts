@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { IFriendInfo, Message } from '../types';
+import { IFriendInfo, IGroupBox, Message } from '../types';
 
 interface IStateSchema {
     topic: string;
@@ -11,12 +11,16 @@ interface IStateSchema {
         conversation: string;
         latestMessage: string;
         messagesViaType: string;
+        groups: string;
     };
     userId: string | undefined;
     userDbId: string | undefined;
     friendList: IFriendInfo[];
     friendRequestsSent: string[];
     haveNewFriend: boolean;
+    activeChatbox: string;
+    activeGroupRoom: string;
+    groupList: IGroupBox[];
 }
 
 const initialState: IStateSchema = {
@@ -29,12 +33,16 @@ const initialState: IStateSchema = {
         conversation: 'https://localhost:7101/api/conversation',
         latestMessage: 'https://localhost:7101/api/latestMessage',
         messagesViaType: 'https://localhost:7101/api/messages',
+        groups: 'https://localhost:7101/api/groups',
     },
     userId: sessionStorage.getItem('user_id')!,
     userDbId: sessionStorage.getItem('user_DbId')!,
     friendList: [],
     friendRequestsSent: [],
     haveNewFriend: false,
+    activeChatbox: '',
+    activeGroupRoom: '',
+    groupList: [],
 };
 
 const rootSlice = createSlice({
@@ -50,11 +58,23 @@ const rootSlice = createSlice({
         setFriendList(state, action) {
             state.friendList = action.payload;
         },
+        addGroupList(state, action) {
+            state.groupList = [...state.groupList, action.payload];
+        },
+        setGroupList(state, action) {
+            state.groupList = action.payload;
+        },
         setFriendRequestsSent(state, action) {
             state.friendRequestsSent = action.payload;
         },
         setFefreshFriendList(state, action) {
             state.haveNewFriend = action.payload;
+        },
+        setActiveChatbox(state, action) {
+            state.activeChatbox = action.payload;
+        },
+        setActiveGroupRoom(state, action) {
+            state.activeGroupRoom = action.payload;
         },
         setLatestMessage(state, action) {
             const data = action.payload as {
@@ -70,6 +90,16 @@ const rootSlice = createSlice({
     },
 });
 
-export const { setTopic, setEmoji, setFriendList, setFriendRequestsSent, setLatestMessage, setFefreshFriendList } =
-    rootSlice.actions;
+export const {
+    setTopic,
+    setEmoji,
+    setFriendList,
+    setFriendRequestsSent,
+    setLatestMessage,
+    setFefreshFriendList,
+    addGroupList,
+    setGroupList,
+    setActiveChatbox,
+    setActiveGroupRoom,
+} = rootSlice.actions;
 export default rootSlice.reducer;

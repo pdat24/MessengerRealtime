@@ -16,9 +16,9 @@ public class ConversationController : ControllerBase
     [HttpGet]
     public async Task<List<MessageModel>> Get(string conversationId)
     {
-        var users = await _db.Conversations.FindAsync(conversation => conversationId == conversation.Id);
-        var conversation = users.FirstOrDefault().conversation;
-        return conversation;
+        var conversation = await _db.Conversations.FindAsync(conversation => conversationId == conversation.Id);
+        var messages = conversation.FirstOrDefault().conversation;
+        return messages;
     }
 
     // [POST]::/api/conversation/{conversationId}

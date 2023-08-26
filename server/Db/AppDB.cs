@@ -1,8 +1,5 @@
 ﻿using MongoDB.Driver;
-using MongoDB.Bson;
 using server.Models;
-using Microsoft.AspNetCore.Mvc;
-using System.Collections;
 
 namespace server.Db;
 
@@ -35,6 +32,14 @@ public class AppDB
         {
             var db = _getDatabase();
             return db.GetCollection<ConversationModel>("conversations");
+        }
+    }
+    public IMongoCollection<GroupModel> Groups
+    {
+        get
+        {
+            var db = _getDatabase();
+            return db.GetCollection<GroupModel>("groups");
         }
     }
 }

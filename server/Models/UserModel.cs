@@ -15,5 +15,6 @@ namespace server.Models
         public List<FriendModel> friends { get; set; } = new();
         public List<ObjectId> friendRequestsReceived { get; set; } = new();
         public List<ObjectId> friendRequestsSent { get; set; } = new();
+        public List<ObjectId> groups { get; set; } = new();
     }
 }

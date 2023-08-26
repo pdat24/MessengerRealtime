@@ -10,29 +10,6 @@ import { Context } from '../ChatRoomContext';
 import CustomPrivilege from './CustomPrivilege';
 import CustomChatRoom from './CustomChatRoom';
 import Media from './Media';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import PushPinIcon from '@mui/icons-material/PushPin';
-import ChevronRightRoundedIcon from '@mui/icons-material/ChevronRightRounded';
-
-function ChatInfo() {
-    const [drop, setDrop] = useState(false);
-    return (
-        <div>
-            <div css={styles.chatInfo} onClick={() => setDrop(!drop)}>
-                <span className="font-bold flex-grow">Thông tin đoạn chat</span>
-                {drop ? <KeyboardArrowDownIcon /> : <ChevronRightRoundedIcon />}
-            </div>
-            {drop && (
-                <div className="ms-4">
-                    <div css={styles.chatInfo}>
-                        <PushPinIcon className="fs-22" />
-                        <span className="font-bold ms-2 text-sm">Xem tin nhắn đã ghim</span>
-                    </div>
-                </div>
-            )}
-        </div>
-    );
-}
 
 function ProfileModel() {
     const [notification, setNotification] = useState(true);
@@ -50,9 +27,18 @@ function ProfileModel() {
     return (
         <div css={styles.container}>
             <div className="py-5 overflow-auto h-full px-2">
-                <img src={avatar} alt="avatar" css={styles.avatar} />
-                <div css={styles.name}>{name}</div>
-                <div css={styles.time}>Hoạt động 17 phút trước</div>
+                <div className="flex justify-center mb-2">
+                    <div className="relative inline-block">
+                        <img src={avatar} alt="avatar" css={styles.avatar} />
+                        <div className="active-dot" css={styles.dot}></div>
+                    </div>
+                </div>
+                <div css={{ maxWidth: '90%' }}>
+                    <span className="textEllipsis" css={styles.name}>
+                        {name}
+                    </span>
+                </div>
+                <div css={styles.time}>Đang hoạt động</div>
                 <div className="flex justify-center mt-4">
                     <div css={styles.actions}>
                         <a className={scss.btn} css={styles.btn} href="https://facebook.com">
@@ -74,10 +60,9 @@ function ProfileModel() {
                     </div>
                 </div>
                 <div className="mt-4">
-                    <ChatInfo />
                     <CustomChatRoom />
                     <Media />
-                    <CustomPrivilege chatRoomInfo={chatRoomInfo!} />
+                    {chatRoomInfo?.friendId && <CustomPrivilege chatRoomInfo={chatRoomInfo!} />}
                 </div>
             </div>
         </div>
@@ -95,12 +80,13 @@ const styles = {
         width: 72px;
         height: 72px;
         border-radius: 50%;
-        margin: 0 auto 8px;
+        border: 1px solid var(--secondary-color);
     `,
     name: css`
         font-size: 17px;
         text-align: center;
         font-weight: bold;
+        width: auto;
     `,
     time: css`
         font-size: 13px;
@@ -132,6 +118,12 @@ const styles = {
         &:hover {
             background-color: var(--bg-hover);
         }
+    `,
+    dot: css`
+        width: 10px;
+        height: 10px;
+        bottom: 4px;
+        right: 6px;
     `,
 };
 

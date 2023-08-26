@@ -18,4 +18,7 @@ connection.on('sentAPrivateMessage', (senderId, receiverId, message, type) => {
         );
     }
 });
-connection.start().then(() => console.log('OK'));
+
+connection.start().then(() => {
+    console.log('Hello developer \\(￣︶￣*\\))');
+});

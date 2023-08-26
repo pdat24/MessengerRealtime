@@ -42,13 +42,15 @@ export default function SendActiveEmojiBtn({ setMessages }: ITextInput) {
         };
         setMessages((messages) => [...messages, newMessage]);
         scrollToBottom();
-        // update new message
-        chatRoomInfo?.friendId && updateLatestMessage(newMessage, chatRoomInfo.friendId);
-        // upload to server
-        await axios.post(`${conversationAPI}/${chatRoomInfo?.conversionId}`, newMessage, {
-            headers: { 'Content-Type': 'Application/json' },
-        });
-        connection.send('SendPrivateMessage', userDbId, chatRoomInfo?.friendId, activeEmoji, 'icon');
+        if (chatRoomInfo?.friendId) {
+            // update new message
+            updateLatestMessage(newMessage, chatRoomInfo.friendId);
+            // upload to server
+            await axios.post(`${conversationAPI}/${chatRoomInfo?.conversionId}`, newMessage, {
+                headers: { 'Content-Type': 'Application/json' },
+            });
+            connection.send('SendPrivateMessage', userDbId, chatRoomInfo?.friendId, activeEmoji, 'icon');
+        }
     };
     return (
         <Tooltip placement="top" title="Gửi biểu tượng này" arrow>

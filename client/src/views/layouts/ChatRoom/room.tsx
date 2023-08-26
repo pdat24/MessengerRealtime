@@ -4,7 +4,7 @@ import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
 import VideocamRoundedIcon from '@mui/icons-material/VideocamRounded';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import scss from './chatroom.module.scss';
-import { Tooltip } from '@mui/material';
+import { CircularProgress, Tooltip } from '@mui/material';
 import TextMessageRight from '~/components/TextMessageRight';
 import TextMessageLeft from '~/components/TextMessageLeft';
 import PendingIcon from '@mui/icons-material/Pending';
@@ -21,6 +21,7 @@ import ActiveEmojiMessageRight from '~/components/ActiveEmojiMessageRight';
 import ActiveEmojiMessageLeft from '~/components/ActiveEmojiMessageLeft';
 import SouthIcon from '@mui/icons-material/South';
 import getFilename from '~/utils/functions/getFilename';
+import axios from 'axios';
 
 function ScrollToBottomBtn() {
     const wrapperStyle = css`
@@ -55,6 +56,7 @@ function Header() {
     const [name, setName] = useState('');
     const [avatar, setAvatar] = useState('');
     const chatBox = useContext(Context);
+
     useMemo(() => {
         if (chatBox) {
             setName(chatBox.username);
@@ -70,10 +72,13 @@ function Header() {
     return (
         <div css={styles.header} className="border-b border-solid border-color">
             <a className="flex items-center gap-2" href="#">
-                <img src={avatar} alt="avatar" css={styles.avatar} />
+                <div className="relative">
+                    <img src={avatar} alt="avatar" css={styles.avatar} />
+                    <div className="active-dot"></div>
+                </div>
                 <div>
                     <div css={styles.name}>{name}</div>
-                    <div css={styles.time}>Hoạt động 17 phút trước</div>
+                    <div css={styles.time}>Đang hoạt động</div>
                 </div>
             </a>
             <div className="flex items-center gap-1">
@@ -102,15 +107,19 @@ function Header() {
 function Room() {
     const userDbId: string = useSelector(({ root }) => root.userDbId);
     const chatBox = useContext(Context);
-    const [messages, setMessages] = useState<Conversation>(chatBox!.conversation);
+    const [messages, setMessages] = useState<Conversation>([]);
     const msgContainerRef = useRef<HTMLDivElement>(null);
     const prevScrollTop = useRef(0);
+    const [isLoading, setIsLoading] = useState(true);
+    const conversationAPI = useSelector(({ root }) => root.APIs.conversation);
 
     useEffect(() => {
         const handleScrollToBottom = () => {
             setTimeout(() => {
-                msgContainerRef.current!.scrollTop = msgContainerRef.current!.scrollHeight;
-                prevScrollTop.current = msgContainerRef.current!.scrollHeight;
+                if (msgContainerRef.current) {
+                    msgContainerRef.current.scrollTop = msgContainerRef.current.scrollHeight;
+                    prevScrollTop.current = msgContainerRef.current.scrollHeight;
+                }
             }, 100);
         };
         window.addEventListener('scrollToBottom', handleScrollToBottom);
@@ -139,9 +148,14 @@ function Room() {
             }
         });
     }, []);
-
-    useMemo(() => {
-        chatBox?.conversation && setMessages(chatBox.conversation);
+    useEffect(() => {
+        setIsLoading(true);
+        if (chatBox?.conversionId) {
+            axios.get(`${conversationAPI}/${chatBox.conversionId}`).then((res) => {
+                setMessages(res.data);
+                setIsLoading(false);
+            });
+        }
     }, [chatBox]);
 
     return (
@@ -149,39 +163,69 @@ function Room() {
             <Header />
             <div css={styles.body} className="relative">
                 <div css={styles.msgWrapper} ref={msgContainerRef}>
-                    {messages.map((elem, index) => {
-                        if (elem.senderId === userDbId) {
-                            if (elem.message.type === 'text')
-                                return <TextMessageRight key={index}>{elem.message.content}</TextMessageRight>;
-                            else if (elem.message.type === 'image')
-                                return <PictureMessageRight key={index} imgUri={elem.message.content} />;
-                            else if (elem.message.type === 'icon')
-                                return <ActiveEmojiMessageRight key={index} imgUri={elem.message.content} />;
-                            else if (elem.message.type === 'file')
-                                return (
-                                    <FileMessageRight
-                                        key={index}
-                                        uri={elem.message.content}
-                                        filename={getFilename(elem.message.content)}
-                                    />
-                                );
-                        } else {
-                            if (elem.message.type === 'text')
-                                return <TextMessageLeft key={index}>{elem.message.content}</TextMessageLeft>;
-                            else if (elem.message.type === 'image')
-                                return <PictureMessageLeft key={index} imgUri={elem.message.content} />;
-                            else if (elem.message.type === 'icon')
-                                return <ActiveEmojiMessageLeft key={index} imgUri={elem.message.content} />;
-                            else if (elem.message.type === 'file')
-                                return (
-                                    <FileMessageLeft
-                                        key={index}
-                                        uri={elem.message.content}
-                                        filename={getFilename(elem.message.content)}
-                                    />
-                                );
-                        }
-                    })}
+                    {isLoading ? (
+                        <div className="flex justify-center h-full items-center">
+                            <CircularProgress />
+                        </div>
+                    ) : (
+                        messages.map((elem, index) => {
+                            if (elem.senderId === userDbId) {
+                                if (elem.message.type === 'text')
+                                    return <TextMessageRight key={index}>{elem.message.content}</TextMessageRight>;
+                                else if (elem.message.type === 'image')
+                                    return <PictureMessageRight key={index} imgUri={elem.message.content} />;
+                                else if (elem.message.type === 'icon')
+                                    return <ActiveEmojiMessageRight key={index} imgUri={elem.message.content} />;
+                                else if (elem.message.type === 'file')
+                                    return (
+                                        <FileMessageRight
+                                            key={index}
+                                            uri={elem.message.content}
+                                            filename={getFilename(elem.message.content)}
+                                        />
+                                    );
+                            } else {
+                                if (elem.message.type === 'text')
+                                    return (
+                                        <TextMessageLeft
+                                            senderName={chatBox!.username}
+                                            senderAvatar={chatBox!.avatarUrl}
+                                            key={index}
+                                        >
+                                            {elem.message.content}
+                                        </TextMessageLeft>
+                                    );
+                                else if (elem.message.type === 'image')
+                                    return (
+                                        <PictureMessageLeft
+                                            senderName={chatBox!.username}
+                                            senderAvatar={chatBox!.avatarUrl}
+                                            key={index}
+                                            imgUri={elem.message.content}
+                                        />
+                                    );
+                                else if (elem.message.type === 'icon')
+                                    return (
+                                        <ActiveEmojiMessageLeft
+                                            senderName={chatBox!.username}
+                                            senderAvatar={chatBox!.avatarUrl}
+                                            key={index}
+                                            imgUri={elem.message.content}
+                                        />
+                                    );
+                                else if (elem.message.type === 'file')
+                                    return (
+                                        <FileMessageLeft
+                                            senderName={chatBox!.username}
+                                            senderAvatar={chatBox!.avatarUrl}
+                                            key={index}
+                                            uri={elem.message.content}
+                                            filename={getFilename(elem.message.content)}
+                                        />
+                                    );
+                            }
+                        })
+                    )}
                 </div>
                 <ScrollToBottomBtn />
             </div>

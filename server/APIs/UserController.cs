@@ -26,6 +26,20 @@ public class UserController : ControllerBase
         return result;
     }
 
+    // [GET]::/api/user/arrayUserIds
+    [Route("arrayUserIds")]
+    [HttpPost]
+    public async Task<List<SuggestedUserRepresent>> GetUsersByArrayIds(ArrayUserIds userIds)
+    {
+        var users = await _db.Users.FindAsync(u => userIds.UserIds.Contains(u.Id));
+        var result = new List<SuggestedUserRepresent>();
+        await users.ForEachAsync(user =>
+        {
+            result.Add(new SuggestedUserRepresent(user.username, user.avatarUrl, user.Id));
+        });
+        return result;
+    }
+
     // [GET]::/api/user/{userid}
     [Route("{userID}")]
     [HttpGet]
@@ -56,4 +70,5 @@ public class UserController : ControllerBase
 
 }
 public record UserAPIRepresent(string? Username, string? AvatarUrl);
+public record ArrayUserIds(string[] UserIds);
 public record SuggestedUserRepresent(string Username, string AvatarUrl, string UserDbId);

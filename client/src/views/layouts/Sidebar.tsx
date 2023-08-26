@@ -17,7 +17,7 @@ import Diversity3Icon from '@mui/icons-material/Diversity3';
 
 function Sidebar() {
     const userAPIUrl = useSelector(({ root }) => root.APIs.user);
-    const [shrink, setShrink] = useState(false);
+    const [shrink, setShrink] = useState(true);
     const [showSetting, setShowSetting] = useState(false);
     const [username, setUsername] = useState('');
     const userId = useSelector(({ root }) => root.userId);
@@ -80,10 +80,12 @@ function Sidebar() {
             >
                 <div
                     onClick={() => setShowSetting(true)}
-                    className={clsx(style.link, 'flex items-center cursor-pointer p-2 grow transition-colors gap-3')}
+                    className={clsx(style.link, 'flex items-center cursor-pointer p-2 grow transition-colors gap-3', {
+                        'w-0': !shrink,
+                    })}
                 >
                     <Avatar src={avatarUrl} alt="avatar" className={style.avatar} />
-                    <span css={hiddneWhenShrink} className={style.linkTitle}>
+                    <span css={hiddneWhenShrink} className={clsx(style.linkTitle, 'textEllipsis')}>
                         {username}
                     </span>
                 </div>
@@ -119,10 +121,18 @@ const styles = {
 };
 
 const links = [
-    { icon: <MarkChatUnreadIcon css={styles.icon} />, title: 'Chat', path: '/' },
+    {
+        icon: <MarkChatUnreadIcon css={styles.icon} />,
+        title: 'Chat',
+        path: '/',
+    },
     { icon: <PersonAddIcon css={styles.icon} />, title: 'Kết bạn', path: '/make-friend' },
     { icon: <PeopleIcon css={styles.icon} />, title: 'Lời mời kết bạn', path: '/friend-requests' },
-    { icon: <Diversity3Icon css={styles.icon} />, title: 'Nhóm chat', path: '/groups' },
+    {
+        icon: <Diversity3Icon css={styles.icon} />,
+        title: 'Nhóm chat',
+        path: '/groups',
+    },
 ];
 
 export default Sidebar;

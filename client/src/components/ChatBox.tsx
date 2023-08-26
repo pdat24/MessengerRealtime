@@ -16,10 +16,15 @@ const renderNewMessage = (userDbId: string, message?: Message) => {
     return result;
 };
 
-function ChatBox({ username, latestMessage, avatarUrl, read, conversation, friendId }: IChatBox) {
+interface IType extends IChatBox {
+    active?: boolean;
+}
+
+function ChatBox({ username, latestMessage, avatarUrl, read, friendId, active }: IType) {
     const userDbId = useSelector(({ root }) => root.userDbId);
     const [newMsg, setNewMsg] = useState(renderNewMessage(userDbId, latestMessage));
     const [readMsg, setReadMsg] = useState(read);
+
     useEffect(() => {
         window.addEventListener('sentNewMessage', (e: CustomEventInit) => {
             if (e.detail.friendId === friendId) {
@@ -32,21 +37,19 @@ function ChatBox({ username, latestMessage, avatarUrl, read, conversation, frien
         });
     });
 
-    const handleClick = () => {
-        window.dispatchEvent(
-            new CustomEvent('selectedAChat', {
-                detail: {
-                    username,
-                    avatarUrl,
-                    conversation,
-                },
-            })
-        );
-        setReadMsg(true);
-    };
-
     return (
-        <div css={styles.container} onClick={handleClick}>
+        <div
+            css={styles.container}
+            onClick={() => setReadMsg(true)}
+            style={
+                active
+                    ? {
+                          backgroundColor: 'var(--bg-hover)',
+                          outline: '1px solid var(--secondary-color2)',
+                      }
+                    : {}
+            }
+        >
             <div className="flex gap-2 items-center w-full">
                 <img src={avatarUrl} alt="avatar" css={styles.avatar} className="shrink-0" />
                 <div className="overflow-hidden flex-grow">
@@ -55,7 +58,7 @@ function ChatBox({ username, latestMessage, avatarUrl, read, conversation, frien
                     </h6>
                     <span css={!readMsg ? styles.unreadMsg : styles.readMsg}>{newMsg}</span>
                 </div>
-                <div css={styles.right} className="shrink-0">
+                <div className="shrink-0">
                     {!readMsg ? (
                         <div css={styles.unreadDot}></div>
                     ) : (
@@ -78,13 +81,12 @@ const newMessage = css`
 const styles = {
     container: css`
         border-radius: 8px;
-        transition: all 0.15s ease;
         display: flex;
         align-items: center;
         padding: 8px;
         justify-content: space-between;
         cursor: pointer;
-
+        margin-bottom: 4px;
         &:hover {
             background-color: var(--bg-hover);
         }
@@ -110,7 +112,6 @@ const styles = {
         font-size: 13px;
         color: #a3a3a3;
     `,
-    right: css``,
     subAvatar: css`
         width: 16px;
         height: 16px;

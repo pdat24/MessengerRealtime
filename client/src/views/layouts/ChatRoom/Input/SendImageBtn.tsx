@@ -48,26 +48,28 @@ function SendImageBtn({ setMessages }: ITextInput) {
             setMessages((messages) => [...messages, newMessage]);
             scrollToBottom();
             pictureInput.current.value = '';
-            // update new message
-            chatRoomInfo?.friendId && updateLatestMessage(newMessage, chatRoomInfo.friendId);
-            // upload to firebase
-            await uploadBytes(ref(storage, 'images/' + pictureUrlTail), newPicture);
-            const pictures = await listAll(ref(storage, 'images'));
+            if (chatRoomInfo?.friendId) {
+                // update new message
+                updateLatestMessage(newMessage, chatRoomInfo.friendId);
+                // upload to firebase
+                await uploadBytes(ref(storage, 'images/' + pictureUrlTail), newPicture);
+                const pictures = await listAll(ref(storage, 'images'));
 
-            for (const picture of pictures.items) {
-                const pictureUrl = await getDownloadURL(picture);
-                if (pictureUrl.includes(pictureUrlTail)) {
-                    const newMessage: Message = {
-                        senderId: userDbId,
-                        message: {
-                            content: pictureUrl,
-                            type: 'image',
-                        },
-                    };
-                    await axios.post(`${conversationAPI}/${chatRoomInfo?.conversionId}`, newMessage, {
-                        headers: { 'Content-Type': 'Application/json' },
-                    });
-                    connection.send('SendPrivateMessage', userDbId, chatRoomInfo?.friendId, pictureUrl, 'image');
+                for (const picture of pictures.items) {
+                    const pictureUrl = await getDownloadURL(picture);
+                    if (pictureUrl.includes(pictureUrlTail)) {
+                        const newMessage: Message = {
+                            senderId: userDbId,
+                            message: {
+                                content: pictureUrl,
+                                type: 'image',
+                            },
+                        };
+                        await axios.post(`${conversationAPI}/${chatRoomInfo?.conversionId}`, newMessage, {
+                            headers: { 'Content-Type': 'Application/json' },
+                        });
+                        connection.send('SendPrivateMessage', userDbId, chatRoomInfo?.friendId, pictureUrl, 'image');
+                    }
                 }
             }
         }

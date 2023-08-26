@@ -37,31 +37,33 @@ export default function SendFileBtn({ setMessages }: ITextInput) {
             const newPicture = fileInput.current.files[0];
             const fileUrlTail = `_${newPicture.name}_${v4()}`;
 
-            // upload to firebase
-            await uploadBytes(ref(storage, 'files/' + fileUrlTail), newPicture);
-            const files = await listAll(ref(storage, 'files'));
+            if (chatRoomInfo?.friendId) {
+                // upload to firebase
+                await uploadBytes(ref(storage, 'files/' + fileUrlTail), newPicture);
+                const files = await listAll(ref(storage, 'files'));
 
-            for (const file of files.items) {
-                const fileUrl = await getDownloadURL(file);
-                if (fileUrl.includes(fileUrlTail)) {
-                    const newMessage: Message = {
-                        senderId: userDbId,
-                        message: {
-                            content: fileUrl,
-                            type: 'file',
-                        },
-                    };
-                    // update UI
-                    setMessages((messages) => [...messages, newMessage]);
-                    scrollToBottom();
-                    fileInput.current.value = '';
-                    // update new message
-                    chatRoomInfo?.friendId && updateLatestMessage(newMessage, chatRoomInfo.friendId);
-                    // upload to database
-                    await axios.post(`${conversationAPI}/${chatRoomInfo?.conversionId}`, newMessage, {
-                        headers: { 'Content-Type': 'Application/json' },
-                    });
-                    connection.send('SendPrivateMessage', userDbId, chatRoomInfo?.friendId, fileUrl, 'file');
+                for (const file of files.items) {
+                    const fileUrl = await getDownloadURL(file);
+                    if (fileUrl.includes(fileUrlTail)) {
+                        const newMessage: Message = {
+                            senderId: userDbId,
+                            message: {
+                                content: fileUrl,
+                                type: 'file',
+                            },
+                        };
+                        // update UI
+                        setMessages((messages) => [...messages, newMessage]);
+                        scrollToBottom();
+                        fileInput.current.value = '';
+                        // update new message
+                        chatRoomInfo?.friendId && updateLatestMessage(newMessage, chatRoomInfo.friendId);
+                        // upload to database
+                        await axios.post(`${conversationAPI}/${chatRoomInfo?.conversionId}`, newMessage, {
+                            headers: { 'Content-Type': 'Application/json' },
+                        });
+                        connection.send('SendPrivateMessage', userDbId, chatRoomInfo?.friendId, fileUrl, 'file');
+                    }
                 }
             }
         }

@@ -1,16 +1,18 @@
-import { ReactElement, useEffect } from 'react';
+import { ReactElement, useEffect, useState } from 'react';
 import Sidebar from './Sidebar';
 import ChatRoom from './ChatRoom';
 import { IUsers } from '~/utils/types';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
-import { setFriendRequestsSent } from '~/utils/redux/rootSlice';
+import { setActiveChatbox, setActiveGroupRoom, setFriendRequestsSent } from '~/utils/redux/rootSlice';
+import GroupRoom from '../pages/groups/GroupRoom';
 
 function DefaultLayout({ children }: { children: ReactElement }) {
     const dispatch = useDispatch();
     const friendRequestsSent = useSelector(({ root }) => root.friendRequestsSent) as IUsers[];
     const friendRequestsAPIPath = useSelector(({ root }) => root.APIs.friendRequests);
     const userId = useSelector(({ root }) => root.userId);
+    const [openGroupChat, setOpenGroupChat] = useState(location.href.split('/').at(-1) === 'groups');
 
     useEffect(() => {
         (async () => {
@@ -20,6 +22,14 @@ function DefaultLayout({ children }: { children: ReactElement }) {
                 dispatch(setFriendRequestsSent(usersSent));
             }
         })();
+        window.addEventListener('openGroupChat', () => {
+            setOpenGroupChat(true);
+            dispatch(setActiveGroupRoom(-1));
+        });
+        window.addEventListener('openPrivateChat', () => {
+            setOpenGroupChat(false);
+            dispatch(setActiveChatbox(-1));
+        });
     }, []);
 
     return (
@@ -28,9 +38,7 @@ function DefaultLayout({ children }: { children: ReactElement }) {
                 <Sidebar />
                 {children}
             </div>
-            <div className="flex-grow">
-                <ChatRoom />
-            </div>
+            <div className="flex-grow">{openGroupChat ? <GroupRoom /> : <ChatRoom />}</div>
         </div>
     );
 }

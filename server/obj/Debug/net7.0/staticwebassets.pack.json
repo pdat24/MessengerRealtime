@@ -9,60 +9,96 @@
       "PackagePath": "staticwebassets\\assets\\favicon-ace07af6.ico"
     },
     {
-      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\female-02-dd7c22f9.jpg",
-      "PackagePath": "staticwebassets\\assets\\female-02-dd7c22f9.jpg"
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\index-3a440316.js",
+      "PackagePath": "staticwebassets\\assets\\index-3a440316.js"
     },
     {
-      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\female-03-6f3720ad.jpg",
-      "PackagePath": "staticwebassets\\assets\\female-03-6f3720ad.jpg"
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\index-8f89531d.css",
+      "PackagePath": "staticwebassets\\assets\\index-8f89531d.css"
     },
     {
-      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\female-04-e32c661f.jpg",
-      "PackagePath": "staticwebassets\\assets\\female-04-e32c661f.jpg"
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\bin\\Debug\\net7.0\\AWSSDK.Core.dll",
+      "PackagePath": "staticwebassets\\bin\\Debug\\net7.0\\AWSSDK.Core.dll"
     },
     {
-      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\female-06-16e330f1.jpg",
-      "PackagePath": "staticwebassets\\assets\\female-06-16e330f1.jpg"
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\bin\\Debug\\net7.0\\AWSSDK.SecurityToken.dll",
+      "PackagePath": "staticwebassets\\bin\\Debug\\net7.0\\AWSSDK.SecurityToken.dll"
     },
     {
-      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\female-09-6b11ac41.jpg",
-      "PackagePath": "staticwebassets\\assets\\female-09-6b11ac41.jpg"
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\bin\\Debug\\net7.0\\DnsClient.dll",
+      "PackagePath": "staticwebassets\\bin\\Debug\\net7.0\\DnsClient.dll"
     },
     {
-      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\female-10-ede1ddfa.jpg",
-      "PackagePath": "staticwebassets\\assets\\female-10-ede1ddfa.jpg"
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\bin\\Debug\\net7.0\\MongoDB.Bson.dll",
+      "PackagePath": "staticwebassets\\bin\\Debug\\net7.0\\MongoDB.Bson.dll"
     },
     {
-      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\index-34a1f521.js",
-      "PackagePath": "staticwebassets\\assets\\index-34a1f521.js"
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\bin\\Debug\\net7.0\\MongoDB.Driver.Core.dll",
+      "PackagePath": "staticwebassets\\bin\\Debug\\net7.0\\MongoDB.Driver.Core.dll"
     },
     {
-      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\index-8045220d.css",
-      "PackagePath": "staticwebassets\\assets\\index-8045220d.css"
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\bin\\Debug\\net7.0\\MongoDB.Driver.dll",
+      "PackagePath": "staticwebassets\\bin\\Debug\\net7.0\\MongoDB.Driver.dll"
     },
     {
-      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\male-01-63aab7b5.jpg",
-      "PackagePath": "staticwebassets\\assets\\male-01-63aab7b5.jpg"
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\bin\\Debug\\net7.0\\MongoDB.Libmongocrypt.dll",
+      "PackagePath": "staticwebassets\\bin\\Debug\\net7.0\\MongoDB.Libmongocrypt.dll"
     },
     {
-      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\male-02-ed82dd49.jpg",
-      "PackagePath": "staticwebassets\\assets\\male-02-ed82dd49.jpg"
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\bin\\Debug\\net7.0\\SharpCompress.dll",
+      "PackagePath": "staticwebassets\\bin\\Debug\\net7.0\\SharpCompress.dll"
     },
     {
-      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\male-05-a3ba5c13.jpg",
-      "PackagePath": "staticwebassets\\assets\\male-05-a3ba5c13.jpg"
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\bin\\Debug\\net7.0\\Snappier.dll",
+      "PackagePath": "staticwebassets\\bin\\Debug\\net7.0\\Snappier.dll"
     },
     {
-      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\male-06-99c169eb.jpg",
-      "PackagePath": "staticwebassets\\assets\\male-06-99c169eb.jpg"
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\bin\\Debug\\net7.0\\ZstdSharp.dll",
+      "PackagePath": "staticwebassets\\bin\\Debug\\net7.0\\ZstdSharp.dll"
     },
     {
-      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\male-10-0eb1e57b.jpg",
-      "PackagePath": "staticwebassets\\assets\\male-10-0eb1e57b.jpg"
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\bin\\Debug\\net7.0\\appsettings.Development.json",
+      "PackagePath": "staticwebassets\\bin\\Debug\\net7.0\\appsettings.Development.json"
     },
     {
-      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\assets\\male-12-c161af5a.jpg",
-      "PackagePath": "staticwebassets\\assets\\male-12-c161af5a.jpg"
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\bin\\Debug\\net7.0\\appsettings.json",
+      "PackagePath": "staticwebassets\\bin\\Debug\\net7.0\\appsettings.json"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\bin\\Debug\\net7.0\\runtimes\\linux\\native\\libmongocrypt.so",
+      "PackagePath": "staticwebassets\\bin\\Debug\\net7.0\\runtimes\\linux\\native\\libmongocrypt.so"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\bin\\Debug\\net7.0\\runtimes\\osx\\native\\libmongocrypt.dylib",
+      "PackagePath": "staticwebassets\\bin\\Debug\\net7.0\\runtimes\\osx\\native\\libmongocrypt.dylib"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\bin\\Debug\\net7.0\\runtimes\\win\\native\\mongocrypt.dll",
+      "PackagePath": "staticwebassets\\bin\\Debug\\net7.0\\runtimes\\win\\native\\mongocrypt.dll"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\bin\\Debug\\net7.0\\server.deps.json",
+      "PackagePath": "staticwebassets\\bin\\Debug\\net7.0\\server.deps.json"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\bin\\Debug\\net7.0\\server.dll",
+      "PackagePath": "staticwebassets\\bin\\Debug\\net7.0\\server.dll"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\bin\\Debug\\net7.0\\server.exe",
+      "PackagePath": "staticwebassets\\bin\\Debug\\net7.0\\server.exe"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\bin\\Debug\\net7.0\\server.pdb",
+      "PackagePath": "staticwebassets\\bin\\Debug\\net7.0\\server.pdb"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\bin\\Debug\\net7.0\\server.runtimeconfig.json",
+      "PackagePath": "staticwebassets\\bin\\Debug\\net7.0\\server.runtimeconfig.json"
+    },
+    {
+      "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\bin\\Debug\\net7.0\\server.staticwebassets.runtime.json",
+      "PackagePath": "staticwebassets\\bin\\Debug\\net7.0\\server.staticwebassets.runtime.json"
     },
     {
       "Id": "C:\\Users\\datp6\\OneDrive\\Documents\\Code\\Fullstack\\MessengerRealTime\\server\\wwwroot\\css\\site.css",

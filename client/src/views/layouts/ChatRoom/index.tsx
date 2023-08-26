@@ -1,8 +1,11 @@
+/**@jsxImportSource @emotion/react */
 import { useEffect, useState } from 'react';
 import Profile from './profile';
 import Room from './room';
 import ChatRoomContext from './ChatRoomContext';
 import { IChatBox } from '~/utils/types';
+import QuestionAnswerOutlinedIcon from '@mui/icons-material/QuestionAnswerOutlined';
+import { css } from '@emotion/react';
 
 function ChatRoom() {
     const [selectedChat, setSelectedChat] = useState(false);
@@ -27,8 +30,29 @@ function ChatRoom() {
             </div>
         </ChatRoomContext>
     ) : (
-        <div>Select a conversation to continue</div>
+        <div className="h-full w-full flex justify-center items-center">
+            <div className="flex items-center flex-col">
+                <QuestionAnswerOutlinedIcon css={styles.icon} />
+                <div className="mt-2" css={styles.text}>
+                    Chọn một hội thoại để tiếp tục
+                </div>
+            </div>
+        </div>
     );
 }
+
+const styles = {
+    text: css`
+        color: var(--secondary-color);
+        font-size: 20px;
+        font-weight: 500;
+    `,
+    icon: css`
+        font-size: 100px;
+        path {
+            color: var(--secondary-color);
+        }
+    `,
+};
 
 export default ChatRoom;

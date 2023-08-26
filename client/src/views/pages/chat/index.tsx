@@ -5,12 +5,12 @@ import style from '../../layouts/layout.module.scss';
 import { css } from '@emotion/react';
 import ChatBox from '~/components/ChatBox';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import generateBot from '~/utils/functions/generateBot';
+import favicon from '~/assets/imgs/favicon.ico';
 import { IChatBox, IFriendInfo } from '~/utils/types';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { setFefreshFriendList, setFriendList } from '~/utils/redux/rootSlice';
+import { setActiveChatbox, setFefreshFriendList, setFriendList } from '~/utils/redux/rootSlice';
 import { CircularProgress } from '@mui/material';
 
 const title = css`
@@ -27,30 +27,15 @@ function Chat() {
     const dispatch = useDispatch();
     const searchWrapper = useRef<HTMLDivElement>(null);
     const bodyDOM = useRef<HTMLDivElement>(null);
-    const firstChatBox = useRef<IChatBox>();
     const [friends, setFriends] = useState<IFriendInfo[]>([]);
     const friendAPI = useSelector(({ root }) => root.APIs.friends);
     const friendList = useSelector(({ root }) => root.friendList) as Array<IFriendInfo>;
-    const conversationAPI = useSelector(({ root }) => root.APIs.conversation);
     const haveNewFriend = useSelector(({ root }) => root.haveNewFriend);
     const latestMessageAPIPath = useSelector(({ root }) => root.APIs.latestMessage);
     const userId = useSelector(({ root }) => root.userId);
     const userDbId = useSelector(({ root }) => root.userDbId);
+    const activeChatbox = useSelector(({ root }) => root.activeChatbox);
     const [isLoading, setIsLoading] = useState(true);
-
-    useEffect(() => {
-        // handle scroll
-        bodyDOM.current!.onscroll = () => {
-            if (bodyDOM.current!.scrollTop > 0) {
-                searchWrapper.current?.classList.add('border-b', 'border-solid', 'border-color');
-            } else {
-                searchWrapper.current?.classList.remove('border-b', 'border-solid', 'border-color');
-            }
-        };
-        window.onload = () => {
-            window.dispatchEvent(new CustomEvent('selectedAChat', { detail: firstChatBox.current }));
-        };
-    }, []);
 
     useMemo(() => {
         // data fetching
@@ -67,13 +52,13 @@ function Chat() {
         }
     }, []);
 
-    const handleChooseConversion = async (friend: IFriendInfo) => {
+    const handleChooseConversation = async (friend: IFriendInfo) => {
+        dispatch(setActiveChatbox(friend.id));
         axios.put(`${latestMessageAPIPath}/${userDbId}/${friend.id}/read`);
-        const res = await axios.get(`${conversationAPI}/${friend.conversationId}`);
+        sessionStorage.setItem('friendIdIsChatting', friend.id);
         const chatRoomInfo: IChatBox = {
             username: friend.username,
             avatarUrl: friend.avatarUrl,
-            conversation: res.data,
             conversionId: friend.conversationId,
             friendId: friend.id,
         };
@@ -90,6 +75,29 @@ function Chat() {
         window.dispatchEvent(new CustomEvent('selectedAChat', { detail: chatRoomInfo }));
         window.dispatchEvent(new CustomEvent('scrollToBottom'));
     };
+    const handleChooseBotConversation = () => {
+        dispatch(setActiveChatbox(''));
+        const chatRoomInfo: IChatBox = {
+            username: 'Messenger',
+            avatarUrl: favicon,
+            conversionId: '64e9b0845abb19cd3c2a5d64',
+        };
+        window.dispatchEvent(new CustomEvent('selectedAChat', { detail: chatRoomInfo }));
+        window.dispatchEvent(new CustomEvent('scrollToBottom'));
+    };
+
+    useEffect(() => {
+        // handle scroll
+        bodyDOM.current!.onscroll = () => {
+            if (bodyDOM.current!.scrollTop > 0) {
+                searchWrapper.current?.classList.add('border-b', 'border-solid', 'border-color');
+            } else {
+                searchWrapper.current?.classList.remove('border-b', 'border-solid', 'border-color');
+            }
+        };
+        if (friends.length) handleChooseConversation(friends[0]);
+        else if (friends.length === 0) handleChooseBotConversation();
+    }, [friends]);
 
     return (
         <div className={clsx(style.chatContainer, 'border-r border-solid border-color')}>
@@ -109,26 +117,30 @@ function Chat() {
             <div className={style.body} ref={bodyDOM}>
                 <div className="p-1.5">
                     <h5 className="mx-3 mb-2 mt-1 text-lg font-medium">Bạn bè</h5>
-                    <div className="mb-7">
-                        {friends.length !== 0 || isLoading ? (
-                            isLoading ? (
-                                <div className="flex justify-center my-4">
-                                    <CircularProgress />
+                    <div>
+                        {isLoading ? (
+                            <div className="flex justify-center my-4">
+                                <CircularProgress />
+                            </div>
+                        ) : friends.length !== 0 ? (
+                            friends.map((friend, index) => (
+                                <div
+                                    onClick={() =>
+                                        activeChatbox !== friend.id ? handleChooseConversation(friend) : {}
+                                    }
+                                    key={index}
+                                >
+                                    <ChatBox
+                                        username={friend.username}
+                                        latestMessage={friend.latestMessage}
+                                        avatarUrl={friend.avatarUrl}
+                                        read={friend.read}
+                                        conversation={[]}
+                                        friendId={friend.id}
+                                        active={activeChatbox === friend.id}
+                                    />
                                 </div>
-                            ) : (
-                                friends.map((friend, index) => (
-                                    <div onClick={() => handleChooseConversion(friend)} key={index}>
-                                        <ChatBox
-                                            username={friend.username}
-                                            latestMessage={friend.latestMessage}
-                                            avatarUrl={friend.avatarUrl}
-                                            read={friend.read}
-                                            conversation={[]}
-                                            friendId={friend.id}
-                                        />
-                                    </div>
-                                ))
-                            )
+                            ))
                         ) : (
                             <p className="text-center text-sm italic mt-5">
                                 Bạn chưa có người bạn nào!{' '}
@@ -138,20 +150,18 @@ function Chat() {
                             </p>
                         )}
                     </div>
-                    <h5 className="mx-3 mb-2 mt-3 text-base font-medium">Máy ngẫu nhiên</h5>
-                    {generateBot().map((bot, index) => {
-                        if (index === 0) firstChatBox.current = bot;
-                        return (
-                            <ChatBox
-                                username={bot.username}
-                                latestMessage={bot.latestMessage}
-                                avatarUrl={bot.avatarUrl}
-                                key={index}
-                                read={Math.random() >= 0.5}
-                                conversation={bot.conversation}
-                            />
-                        );
-                    })}
+                    <div onClick={handleChooseBotConversation}>
+                        <ChatBox
+                            username="Messenger"
+                            latestMessage={{
+                                senderId: '',
+                                message: { content: 'Chào mừng đến với mesenger❤️', type: 'text' },
+                            }}
+                            avatarUrl={favicon}
+                            read
+                            active={activeChatbox === ''}
+                        />
+                    </div>
                 </div>
             </div>
         </div>

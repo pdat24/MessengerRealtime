@@ -41,11 +41,13 @@ function SendTextBtn({ setMessages }: ITextInput) {
                 },
             };
             setMessages((messages) => [...messages, newMessage]);
-            axios.post(`${conversationAPIPath}/${chatRoomInfo?.conversionId}`, newMessage);
-            chatRoomInfo?.friendId && updateLatestMessage(newMessage, chatRoomInfo.friendId);
+            if (chatRoomInfo?.friendId) {
+                axios.post(`${conversationAPIPath}/${chatRoomInfo?.conversionId}`, newMessage);
+                updateLatestMessage(newMessage, chatRoomInfo.friendId);
+                connection.send('SendPrivateMessage', userDbId, chatRoomInfo?.friendId, text, 'text');
+            }
             setText('');
             scrollToBottom();
-            connection.send('SendPrivateMessage', userDbId, chatRoomInfo?.friendId, text, 'text');
         }
     };
 

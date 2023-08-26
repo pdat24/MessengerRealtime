@@ -63,3 +63,22 @@ body {
 .fs-22 {
     font-size: 22px !important;
 }
+
+.active-dot {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--active-color);
+    bottom: 1px;
+    right: 1px;
+    border: 1px solid var(--secondary-color2);
+}
+
+.textEllipsis {
+    white-space: nowrap;
+    display: block;
+    width: 90%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
