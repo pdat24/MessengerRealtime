@@ -4,7 +4,7 @@ import scss from '../chatroom.module.scss';
 import clsx from 'clsx';
 import { Tooltip } from '@mui/material';
 import scrollToBottom from './scrollToBottom';
-import { useContext, useMemo, useRef } from 'react';
+import { useContext, useRef } from 'react';
 import { Context } from '../RoomContext';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
@@ -13,6 +13,8 @@ import { getDownloadURL, listAll, ref, uploadBytes } from 'firebase/storage';
 import storage from '~/firebase/storage';
 import { v4 } from 'uuid';
 import { ITextInput } from './inputTypes';
+import useListenMessageInGroup from '~/utils/hooks/useListenMessageInGroup';
+import { connection } from '~/utils/functions/chatOnline';
 
 function SendImageBtn({ setMessages }: ITextInput) {
     const userDbId: string = useSelector(({ root }) => root.userDbId);
@@ -20,13 +22,11 @@ function SendImageBtn({ setMessages }: ITextInput) {
     const group = useContext(Context);
     const pictureInput = useRef<HTMLInputElement>(null);
 
-    useMemo(() => {
-        // receiveOnlineMessage({
-        //     type: 'image',
-        //     onSetMessages: setMessages,
-        //     onUpdateLatestMessage: updateLatestMessage,
-        // });
-    }, []);
+    useListenMessageInGroup({
+        conversationId: group!.conversationId,
+        updateMessages: setMessages,
+        type: 'image',
+    });
 
     const handleSendPicture = async () => {
         if (pictureInput.current?.files) {
@@ -58,9 +58,15 @@ function SendImageBtn({ setMessages }: ITextInput) {
                             type: 'image',
                         },
                     };
-                    await axios.post(`${conversationAPI}/${group?.conversationId}`, newMessage, {
-                        headers: { 'Content-Type': 'Application/json' },
-                    });
+                    await axios.post(`${conversationAPI}/${group?.conversationId}`, newMessage);
+                    connection.send(
+                        'SendGroupMessage',
+                        userDbId,
+                        group?.id,
+                        group?.conversationId,
+                        pictureUrl,
+                        'image'
+                    );
                 }
             }
         }

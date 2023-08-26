@@ -4,7 +4,7 @@ import scss from '../chatroom.module.scss';
 import clsx from 'clsx';
 import { Tooltip } from '@mui/material';
 import SendRoundedIcon from '@mui/icons-material/SendRounded';
-import { useContext, useMemo, useState } from 'react';
+import { useContext, useState } from 'react';
 import { useSelector } from 'react-redux';
 import scrollToBottom from './scrollToBottom';
 import EmojiMessage from '~/components/EmojiMessage';
@@ -12,20 +12,21 @@ import { ITextInput } from './inputTypes';
 import axios from 'axios';
 import { Context } from '../RoomContext';
 import { Message } from '~/utils/types';
+import { connection } from '~/utils/functions/chatOnline';
+import useListenMessageInGroup from '~/utils/hooks/useListenMessageInGroup';
 
 function SendTextBtn({ setMessages }: ITextInput) {
     const userDbId = useSelector(({ root }) => root.userDbId);
+    // const groupList = useSelector(({ root }) => root.groupList) as IGroupBox[];
     const conversationAPIPath = useSelector(({ root }) => root.APIs.conversation);
     const [text, setText] = useState('');
     const group = useContext(Context);
 
-    useMemo(() => {
-        // receiveOnlineMessage({
-        //     type: 'text',
-        //     onSetMessages: setMessages,
-        //     onUpdateLatestMessage: updateLatestMessage,
-        // });
-    }, []);
+    useListenMessageInGroup({
+        conversationId: group!.conversationId,
+        updateMessages: setMessages,
+        type: 'text',
+    });
 
     const handleSendText = () => {
         if (text) {
@@ -40,6 +41,7 @@ function SendTextBtn({ setMessages }: ITextInput) {
             group && axios.post(`${conversationAPIPath}/${group.conversationId}`, newMessage);
             setText('');
             scrollToBottom();
+            connection.send('SendGroupMessage', userDbId, group?.id, group?.conversationId, text, 'text');
         }
     };
 

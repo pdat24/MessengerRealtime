@@ -31,7 +31,7 @@ const styles = {
     `,
     text: css`
         color: var(--text-color);
-        font-size: 14px;
+        font-size: 15px;
     `,
     avatar: css`
         width: 16px;

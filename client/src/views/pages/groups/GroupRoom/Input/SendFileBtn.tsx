@@ -3,7 +3,7 @@ import AttachFileOutlinedIcon from '@mui/icons-material/AttachFileOutlined';
 import scss from '../chatroom.module.scss';
 import clsx from 'clsx';
 import { Tooltip } from '@mui/material';
-import { useContext, useMemo, useRef } from 'react';
+import { useContext, useRef } from 'react';
 import scrollToBottom from './scrollToBottom';
 import { v4 } from 'uuid';
 import { Message } from '~/utils/types';
@@ -13,6 +13,8 @@ import { ITextInput } from './inputTypes';
 import { getDownloadURL, listAll, ref, uploadBytes } from 'firebase/storage';
 import storage from '~/firebase/storage';
 import axios from 'axios';
+import useListenMessageInGroup from '~/utils/hooks/useListenMessageInGroup';
+import { connection } from '~/utils/functions/chatOnline';
 
 export default function SendFileBtn({ setMessages }: ITextInput) {
     const userDbId: string = useSelector(({ root }) => root.userDbId);
@@ -20,13 +22,11 @@ export default function SendFileBtn({ setMessages }: ITextInput) {
     const group = useContext(Context);
     const fileInput = useRef<HTMLInputElement>(null);
 
-    useMemo(() => {
-        // receiveOnlineMessage({
-        //     type: 'file',
-        //     onSetMessages: setMessages,
-        //     onUpdateLatestMessage: updateLatestMessage,
-        // });
-    }, []);
+    useListenMessageInGroup({
+        conversationId: group!.conversationId,
+        updateMessages: setMessages,
+        type: 'file',
+    });
 
     const handleSendFile = async () => {
         if (fileInput.current?.files) {
@@ -52,9 +52,8 @@ export default function SendFileBtn({ setMessages }: ITextInput) {
                     scrollToBottom();
                     fileInput.current.value = '';
                     // upload to database
-                    await axios.post(`${conversationAPI}/${group?.conversationId}`, newMessage, {
-                        headers: { 'Content-Type': 'Application/json' },
-                    });
+                    await axios.post(`${conversationAPI}/${group?.conversationId}`, newMessage);
+                    connection.send('SendGroupMessage', userDbId, group?.id, group?.conversationId, fileUrl, 'file');
                 }
             }
         }
